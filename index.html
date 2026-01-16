@@ -1,543 +1,766 @@
 <!DOCTYPE html>
-<html lang="ja" class="scroll-smooth">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>鋼鉄の涙 - 絶対に鼻をかめないティッシュ | 公式サイト</title>
-    <meta name="description" content="もう、優しくなんてしない。世界初、モース硬度10を誇る「絶対に鼻をかめないティッシュ」。観賞用、護身用、そして一生モノのインテリアとして。">
+    <title>Animation Collection | 上品なアニメーション見本帳</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
-    <!-- Google Fonts: Noto Serif JP (明朝体) -->
+    <!-- Google Fonts: 明朝体を使用 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;600;900&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Custom Config -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;500;700&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         serif: ['"Noto Serif JP"', 'serif'],
-                        sans: ['"Helvetica Neue"', 'Arial', 'sans-serif'],
+                        display: ['"Cormorant Garamond"', 'serif'],
                     },
                     colors: {
-                        sumi: '#1a1a1a',      /* 墨色 */
-                        bg: '#fcfaf2',        /* 生成り色（和紙） */
-                        gold: '#b79b5b',      /* 落ち着いた金 */
-                        accent: '#9e2e23',    /* 錆朱 */
-                        sub: '#595857',       /* 鈍色 */
+                        base: '#fafaf9',      /* stone-50 */
+                        surface: '#ffffff',
+                        text: '#44403c',      /* stone-700 */
+                        muted: '#a8a29e',     /* stone-400 */
+                        gold: '#d4af37',      /* Classic Gold */
+                        goldLight: '#f3e5ab',
+                        rose: '#e1adac',      /* Muted Rose */
+                        accent: '#c08497'
                     },
-                    backgroundImage: {
-                        'washi': "url('https://www.transparenttextures.com/patterns/rice-paper-2.png')",
+                    animation: {
+                        // Basic Fades
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'fade-in-down': 'fadeInDown 0.8s ease-out forwards',
+                        'fade-in-left': 'fadeInLeft 0.8s ease-out forwards',
+                        'fade-in-right': 'fadeInRight 0.8s ease-out forwards',
+                        
+                        // Zooms
+                        'zoom-in': 'zoomIn 0.6s ease-out forwards',
+                        'zoom-in-up': 'zoomInUp 0.6s ease-out forwards',
+                        'zoom-in-down': 'zoomInDown 0.6s ease-out forwards',
+                        
+                        // Bounces (Entrance)
+                        'bounce-in': 'bounceIn 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards',
+                        
+                        // Slides
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                        'slide-down': 'slideDown 0.5s ease-out forwards',
+                        
+                        // Rotations
+                        'rotate-in': 'rotateIn 0.6s ease-out forwards',
+                        'rotate-in-down-left': 'rotateInDownLeft 0.6s ease-out forwards',
+                        
+                        // Special Entrances
+                        'roll-in': 'rollIn 0.6s ease-out forwards',
+                        'jack-in-the-box': 'jackInTheBox 0.6s forwards',
+                        'light-speed-in': 'lightSpeedInRight 0.6s ease-out forwards',
+                        
+                        // Attention Seekers
+                        'bounce-custom': 'bounceCustom 1s infinite',
+                        'flash': 'flash 1.5s infinite',
+                        'pulse': 'pulse 1s infinite',
+                        'rubber-band': 'rubberBand 1s forwards',
+                        'shake-x': 'shakeX 1s forwards',
+                        'shake-y': 'shakeY 1s forwards',
+                        'head-shake': 'headShake 1s ease-in-out forwards',
+                        'swing': 'swing 1s forwards',
+                        'tada': 'tada 1s forwards',
+                        'wobble': 'wobble 1s forwards',
+                        'jello': 'jello 1s forwards',
+                        'heartbeat': 'heartbeat 1.5s ease-in-out infinite',
+                        
+                        // Flips
+                        'flip': 'flip 1s forwards',
+                        'flip-in-x': 'flipInX 0.8s forwards',
+                        'flip-in-y': 'flipInY 0.8s forwards',
+                        
+                        // Text & Decor
+                        'tracking-in': 'trackingIn 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both',
+                        'blur-in': 'blurIn 0.8s ease-out forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                        'spin-slow': 'spin 4s linear infinite',
+                        'gradient-flow': 'gradientFlow 3s ease infinite',
+                        'glitch': 'glitch 1s linear infinite',
                     },
-                    letterSpacing: {
-                        'widest-xl': '0.25em',
+                    keyframes: {
+                        // Basic Fades
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        fadeInUp: { '0%': { opacity: '0', transform: 'translate3d(0, 40px, 0)' }, '100%': { opacity: '1', transform: 'translate3d(0, 0, 0)' } },
+                        fadeInDown: { '0%': { opacity: '0', transform: 'translate3d(0, -40px, 0)' }, '100%': { opacity: '1', transform: 'translate3d(0, 0, 0)' } },
+                        fadeInLeft: { '0%': { opacity: '0', transform: 'translate3d(-40px, 0, 0)' }, '100%': { opacity: '1', transform: 'translate3d(0, 0, 0)' } },
+                        fadeInRight: { '0%': { opacity: '0', transform: 'translate3d(40px, 0, 0)' }, '100%': { opacity: '1', transform: 'translate3d(0, 0, 0)' } },
+
+                        // Zooms
+                        zoomIn: { '0%': { opacity: '0', transform: 'scale3d(0.3, 0.3, 0.3)' }, '50%': { opacity: '1' }, '100%': { opacity: '1' } },
+                        zoomInUp: { '0%': { opacity: '0', transform: 'scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0)', animationTimingFunction: 'cubic-bezier(0.550, 0.055, 0.675, 0.190)' }, '60%': { opacity: '1', transform: 'scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0)', animationTimingFunction: 'cubic-bezier(0.175, 0.885, 0.320, 1)' }, '100%': { opacity: '1', transform: 'scale3d(1, 1, 1) translate3d(0, 0, 0)' } },
+                        zoomInDown: { '0%': { opacity: '0', transform: 'scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0)', animationTimingFunction: 'cubic-bezier(0.550, 0.055, 0.675, 0.190)' }, '60%': { opacity: '1', transform: 'scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0)', animationTimingFunction: 'cubic-bezier(0.175, 0.885, 0.320, 1)' }, '100%': { opacity: '1', transform: 'scale3d(1, 1, 1) translate3d(0, 0, 0)' } },
+
+                        // Slides
+                        slideUp: { '0%': { transform: 'translateY(100%)', visibility: 'visible' }, '100%': { transform: 'translateY(0)' } },
+                        slideDown: { '0%': { transform: 'translateY(-100%)', visibility: 'visible' }, '100%': { transform: 'translateY(0)' } },
+
+                        // Rotations
+                        rotateIn: { '0%': { transform: 'rotate3d(0, 0, 1, -200deg)', opacity: '0' }, '100%': { transform: 'translate3d(0, 0, 0)', opacity: '1' } },
+                        rotateInDownLeft: { '0%': { transform: 'rotate3d(0, 0, 1, -45deg)', opacity: '0', transformOrigin: 'left bottom' }, '100%': { transform: 'translate3d(0, 0, 0)', opacity: '1', transformOrigin: 'left bottom' } },
+
+                        // Special Entrances
+                        rollIn: { '0%': { opacity: '0', transform: 'translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg)' }, '100%': { opacity: '1', transform: 'translate3d(0, 0, 0)' } },
+                        jackInTheBox: { '0%': { opacity: '0', transform: 'scale(0.1) rotate(30deg)', transformOrigin: 'center bottom' }, '50%': { transform: 'rotate(-10deg)' }, '70%': { transform: 'rotate(3deg)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
+                        lightSpeedInRight: { '0%': { transform: 'translate3d(100%, 0, 0) skewX(-30deg)', opacity: '0' }, '60%': { transform: 'skewX(20deg)', opacity: '1' }, '80%': { transform: 'skewX(-5deg)' }, '100%': { transform: 'translate3d(0, 0, 0)' } },
+
+                        // Bounce Entrance
+                        bounceIn: { '0%, 20%, 40%, 60%, 80%, 100%': { animationTimingFunction: 'cubic-bezier(0.215, 0.610, 0.355, 1.000)' }, '0%': { opacity: '0', transform: 'scale3d(0.3, 0.3, 0.3)' }, '20%': { transform: 'scale3d(1.1, 1.1, 1.1)' }, '40%': { transform: 'scale3d(0.9, 0.9, 0.9)' }, '60%': { opacity: '1', transform: 'scale3d(1.03, 1.03, 1.03)' }, '80%': { transform: 'scale3d(0.97, 0.97, 0.97)' }, '100%': { opacity: '1', transform: 'scale3d(1, 1, 1)' } },
+
+                        // Attention Seekers
+                        bounceCustom: { '0%, 100%': { transform: 'translateY(-25%)', animationTimingFunction: 'cubic-bezier(0.8,0,1,1)' }, '50%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0,0,0.2,1)' } },
+                        flash: { '0%, 50%, 100%': { opacity: '1' }, '25%, 75%': { opacity: '0' } },
+                        pulse: { '0%': { transform: 'scale3d(1, 1, 1)' }, '50%': { transform: 'scale3d(1.05, 1.05, 1.05)' }, '100%': { transform: 'scale3d(1, 1, 1)' } },
+                        rubberBand: { '0%': { transform: 'scale3d(1, 1, 1)' }, '30%': { transform: 'scale3d(1.25, 0.75, 1)' }, '40%': { transform: 'scale3d(0.75, 1.25, 1)' }, '50%': { transform: 'scale3d(1.15, 0.85, 1)' }, '65%': { transform: 'scale3d(0.95, 1.05, 1)' }, '75%': { transform: 'scale3d(1.05, 0.95, 1)' }, '100%': { transform: 'scale3d(1, 1, 1)' } },
+                        shakeX: { '0%, 100%': { transform: 'translate3d(0, 0, 0)' }, '10%, 30%, 50%, 70%, 90%': { transform: 'translate3d(-10px, 0, 0)' }, '20%, 40%, 60%, 80%': { transform: 'translate3d(10px, 0, 0)' } },
+                        shakeY: { '0%, 100%': { transform: 'translate3d(0, 0, 0)' }, '10%, 30%, 50%, 70%, 90%': { transform: 'translate3d(0, -10px, 0)' }, '20%, 40%, 60%, 80%': { transform: 'translate3d(0, 10px, 0)' } },
+                        headShake: { '0%': { transform: 'translateX(0)' }, '6.5%': { transform: 'translateX(-6px) rotateY(-9deg)' }, '18.5%': { transform: 'translateX(5px) rotateY(7deg)' }, '31.5%': { transform: 'translateX(-3px) rotateY(-5deg)' }, '43.5%': { transform: 'translateX(2px) rotateY(3deg)' }, '50%': { transform: 'translateX(0)' } },
+                        swing: { '20%': { transform: 'rotate3d(0, 0, 1, 15deg)' }, '40%': { transform: 'rotate3d(0, 0, 1, -10deg)' }, '60%': { transform: 'rotate3d(0, 0, 1, 5deg)' }, '80%': { transform: 'rotate3d(0, 0, 1, -5deg)' }, '100%': { transform: 'rotate3d(0, 0, 1, 0deg)' } },
+                        tada: { '0%': { transform: 'scale3d(1, 1, 1)' }, '10%, 20%': { transform: 'scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg)' }, '30%, 50%, 70%, 90%': { transform: 'scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg)' }, '40%, 60%, 80%': { transform: 'scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg)' }, '100%': { transform: 'scale3d(1, 1, 1)' } },
+                        wobble: { '0%': { transform: 'translate3d(0, 0, 0)' }, '15%': { transform: 'translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg)' }, '30%': { transform: 'translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg)' }, '45%': { transform: 'translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg)' }, '60%': { transform: 'translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg)' }, '75%': { transform: 'translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg)' }, '100%': { transform: 'translate3d(0, 0, 0)' } },
+                        jello: { '0%, 11.1%, 100%': { transform: 'translate3d(0, 0, 0)' }, '22.2%': { transform: 'skewX(-12.5deg) skewY(-12.5deg)' }, '33.3%': { transform: 'skewX(6.25deg) skewY(6.25deg)' }, '44.4%': { transform: 'skewX(-3.125deg) skewY(-3.125deg)' }, '55.5%': { transform: 'skewX(1.5625deg) skewY(1.5625deg)' }, '66.6%': { transform: 'skewX(-0.78125deg) skewY(-0.78125deg)' }, '77.7%': { transform: 'skewX(0.390625deg) skewY(0.390625deg)' }, '88.8%': { transform: 'skewX(-0.1953125deg) skewY(-0.1953125deg)' } },
+                        heartbeat: { '0%': { transform: 'scale(1)' }, '14%': { transform: 'scale(1.3)' }, '28%': { transform: 'scale(1)' }, '42%': { transform: 'scale(1.3)' }, '70%': { transform: 'scale(1)' } },
+
+                        // Flips
+                        flip: { '0%': { transform: 'perspective(400px) rotate3d(0, 1, 0, -360deg)', animationTimingFunction: 'ease-out' }, '40%': { transform: 'perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg)', animationTimingFunction: 'ease-out' }, '50%': { transform: 'perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg)', animationTimingFunction: 'ease-in' }, '80%': { transform: 'perspective(400px) scale3d(0.95, 0.95, 0.95)', animationTimingFunction: 'ease-in' }, '100%': { transform: 'perspective(400px)', animationTimingFunction: 'ease-in' } },
+                        flipInX: { '0%': { transform: 'perspective(400px) rotate3d(1, 0, 0, 90deg)', animationTimingFunction: 'ease-in', opacity: '0' }, '40%': { transform: 'perspective(400px) rotate3d(1, 0, 0, -20deg)', animationTimingFunction: 'ease-in' }, '60%': { transform: 'perspective(400px) rotate3d(1, 0, 0, 10deg)', opacity: '1' }, '80%': { transform: 'perspective(400px) rotate3d(1, 0, 0, -5deg)' }, '100%': { transform: 'perspective(400px)' } },
+                        flipInY: { '0%': { transform: 'perspective(400px) rotate3d(0, 1, 0, 90deg)', animationTimingFunction: 'ease-in', opacity: '0' }, '40%': { transform: 'perspective(400px) rotate3d(0, 1, 0, -20deg)', animationTimingFunction: 'ease-in' }, '60%': { transform: 'perspective(400px) rotate3d(0, 1, 0, 10deg)', opacity: '1' }, '80%': { transform: 'perspective(400px) rotate3d(0, 1, 0, -5deg)' }, '100%': { transform: 'perspective(400px)' } },
+
+                        // Text & Decor
+                        trackingIn: { '0%': { letterSpacing: '-0.5em', opacity: '0' }, '40%': { opacity: '0.6' }, '100%': { opacity: '1' } },
+                        blurIn: { '0%': { filter: 'blur(12px)', opacity: '0' }, '100%': { filter: 'blur(0)', opacity: '1' } },
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-15px)' } },
+                        gradientFlow: { '0%': { backgroundPosition: '0% 50%' }, '50%': { backgroundPosition: '100% 50%' }, '100%': { backgroundPosition: '0% 50%' } },
+                        glitch: { '0%': { transform: 'translate(0)' }, '20%': { transform: 'translate(-2px, 2px)' }, '40%': { transform: 'translate(-2px, -2px)' }, '60%': { transform: 'translate(2px, 2px)' }, '80%': { transform: 'translate(2px, -2px)' }, '100%': { transform: 'translate(0)' } },
                     }
                 }
             }
         }
     </script>
-
     <style>
-        /* Custom Styles for Japanese Vertical Writing & Animations */
         body {
             font-family: 'Noto Serif JP', serif;
-            background-color: #fcfaf2;
-            color: #1a1a1a;
+            background-color: #fafaf9;
+            color: #44403c;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(#e7e5e4 1px, transparent 1px),
+                radial-gradient(#e7e5e4 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
         }
 
-        /* 和紙テクスチャオーバーレイ */
-        .texture-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
-            opacity: 0.6;
-            pointer-events: none;
-            z-index: 0;
-        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fafaf9; }
+        ::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
 
-        /* 縦書きクラス */
-        .tategaki {
-            writing-mode: vertical-rl;
-            text-orientation: upright;
-            letter-spacing: 0.15em;
-            line-height: 2.5; /* 縦書きの行間 */
-        }
-
-        /* アニメーション関連 */
-        .fade-in-up {
+        /* Reveal on Scroll */
+        .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 1s ease-out;
         }
-        
-        .fade-in-up.visible {
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .fade-in-slow {
+        /* Card Styling */
+        .anim-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .anim-card:hover {
+            transform: translateY(-8px);
+            background: #ffffff;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            border-color: #d4af37;
+        }
+
+        /* Copy Tooltip */
+        .tooltip {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #44403c;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
             opacity: 0;
-            transition: opacity 2s ease;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            white-space: nowrap;
+            font-family: sans-serif;
         }
-        
-        .fade-in-slow.visible {
+        .tooltip.show {
             opacity: 1;
+            animation: fadeOut 1.5s forwards;
+        }
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            70% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
-        .reveal-img {
-            clip-path: inset(0 100% 0 0);
-            transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        /* Elegant Button */
+        .btn-elegant {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
-        
-        .reveal-img.visible {
-            clip-path: inset(0 0 0 0);
+        .btn-elegant::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
         }
-
-        /* 縦書きボタンのホバーエフェクト */
-        .btn-vertical {
-            transition: all 0.5s ease;
-        }
-        .btn-vertical:hover {
-            background-color: #1a1a1a;
-            color: #fcfaf2;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        /* スムーズスクロール無効化（JSで制御するため） */
-        html {
-            scroll-behavior: auto;
-        }
-
-        /* カスタムスクロールバー */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #fcfaf2;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #b79b5b;
+        .btn-elegant:hover::after {
+            left: 100%;
         }
     </style>
 </head>
-<body class="antialiased relative">
+<body class="min-h-screen">
 
-    <!-- 背景テクスチャ（全画面固定） -->
-    <div class="texture-overlay"></div>
-
-    <!-- ローディング画面 -->
-    <div id="loader" class="fixed inset-0 z-50 bg-sumi flex items-center justify-center transition-opacity duration-1000">
-        <div class="text-center">
-            <div class="inline-block w-16 h-16 border-2 border-gold/30 border-t-gold rounded-full animate-spin mb-4"></div>
-            <p class="text-gold text-sm tracking-[0.3em] font-light">読み込み中...</p>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-crown text-gold text-xl"></i>
+                <span class="text-xl font-display font-semibold tracking-wider text-stone-700">
+                    Animation Collection
+                </span>
+            </div>
+            <a href="#" class="text-stone-400 hover:text-gold transition-colors font-sm tracking-widest text-xs uppercase">
+                Reference
+            </a>
         </div>
-    </div>
+    </nav>
 
-    <!-- ヘッダー（ナビゲーション） -->
-    <header class="fixed top-0 left-0 w-full z-40 px-6 py-5 flex justify-between items-start mix-blend-difference text-white/90">
-        <h1 class="text-xl font-bold tracking-widest tategaki h-32 select-none border-l border-white/30 pl-3">
-            鋼鉄の涙
-        </h1>
-        <nav class="hidden md:flex flex-col gap-6 text-sm tracking-widest tategaki h-40">
-            <a href="#concept" class="hover:text-gold transition-colors block py-2 border-r border-transparent hover:border-gold pr-2">理念</a>
-            <a href="#features" class="hover:text-gold transition-colors block py-2 border-r border-transparent hover:border-gold pr-2">特長</a>
-            <a href="#specs" class="hover:text-gold transition-colors block py-2 border-r border-transparent hover:border-gold pr-2">仕様</a>
-        </nav>
-        <a href="#order" class="md:hidden bg-white text-black px-4 py-2 text-xs tracking-widest">
-            予約
-        </a>
+    <!-- Hero Section -->
+    <header class="pt-40 pb-24 px-6 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30 bg-gradient-to-b from-white via-transparent to-transparent"></div>
+        <div class="container mx-auto relative z-10">
+            <span class="inline-block mb-4 text-gold tracking-[0.3em] text-sm font-semibold uppercase animate-fade-in">Web Design Resources</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-medium mb-8 animate-fade-in-down text-stone-800 leading-tight">
+                Elegant Animation<br>
+                <span class="italic text-accent/80">Catalogue</span>
+            </h1>
+            <p class="text-md md:text-lg text-stone-500 mb-12 max-w-2xl mx-auto animate-fade-in-up leading-relaxed" style="animation-delay: 0.2s;">
+                洗練されたWebアニメーションのコレクション。<br>
+                クリックで動きを確認し、名称をコピーしてご活用ください。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up" style="animation-delay: 0.4s;">
+                <a href="#entrances" class="btn-elegant px-8 py-3 bg-stone-800 text-white rounded-sm font-medium tracking-wide shadow-lg shadow-stone-300">
+                    Basic Entrances
+                </a>
+                <a href="#attention" class="btn-elegant px-8 py-3 bg-white text-stone-700 border border-stone-300 rounded-sm font-medium tracking-wide hover:border-gold transition-colors">
+                    Attention Effects
+                </a>
+            </div>
+        </div>
     </header>
 
-    <main class="relative z-10">
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 pb-24">
 
-        <!-- HERO SECTION -->
-        <section class="relative w-full h-screen flex items-center justify-center overflow-hidden bg-sumi">
-            <!-- 背景画像（パララックス） -->
-            <div class="absolute inset-0 z-0 opacity-60">
-                <img src="https://images.unsplash.com/photo-1535136928624-9b88302324b9?q=80&w=2000&auto=format&fit=crop" 
-                     alt="静謐な水面と波紋" 
-                     class="w-full h-full object-cover scale-110" id="hero-bg">
+        <!-- 1. 基本の出現 -->
+        <section id="entrances" class="mb-24">
+            <div class="text-center mb-16 reveal">
+                <span class="block text-gold text-2xl mb-2"><i class="fa-solid fa-feather-pointed"></i></span>
+                <h2 class="text-3xl font-display text-stone-700">Basic Entrances</h2>
+                <div class="w-12 h-0.5 bg-gold/50 mx-auto mt-4"></div>
             </div>
             
-            <!-- コンテンツ -->
-            <div class="relative z-10 container mx-auto px-6 h-full flex flex-col-reverse md:flex-row items-center justify-center md:justify-between">
-                
-                <!-- キャッチコピー（縦書き） -->
-                <div class="flex flex-row-reverse gap-8 md:gap-16 items-start h-[60vh] md:mr-20">
-                    <h2 class="tategaki text-3xl md:text-5xl font-black text-white leading-loose tracking-widest drop-shadow-lg fade-in-up" style="transition-delay: 0.2s;">
-                        もう、優しくなんてしない。<br>
-                        <span class="text-2xl md:text-4xl mt-4 inline-block text-gray-300">絶対に鼻をかめないティッシュ。</span>
-                    </h2>
-                    <p class="tategaki text-sm md:text-base text-gold tracking-widest leading-loose h-full border-r border-gold/30 pr-6 fade-in-up" style="transition-delay: 0.4s;">
-                        鋼鉄の強度が、あなたの涙を弾き返す。<br>
-                        世界初、観賞用ティッシュ誕生。
-                    </p>
-                </div>
-
-                <!-- 印象的なロゴマーク的なもの -->
-                <div class="mb-10 md:mb-0 md:absolute md:bottom-12 md:left-12 fade-in-up" style="transition-delay: 0.6s;">
-                    <div class="w-24 h-24 border border-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                        <span class="tategaki text-xs text-white tracking-widest">世界硬度<br>第一位</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Fade In -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-fade-in')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="w-16 h-16 bg-rose-200 rounded-full animate-fade-in shadow-inner flex items-center justify-center text-white"><i class="fa-solid fa-wind"></i></div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Fade In</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Fade In')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
                     </div>
                 </div>
+
+                <!-- Fade In Up -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-fade-in-up')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="w-16 h-16 bg-stone-200 rounded-full animate-fade-in-up shadow-inner flex items-center justify-center text-white"><i class="fa-solid fa-arrow-up"></i></div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Fade In Up</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Fade In Up')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Zoom In -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-zoom-in')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="w-16 h-16 bg-goldLight rounded-full animate-zoom-in shadow-inner flex items-center justify-center text-gold"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Zoom In</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Zoom In')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Slide Up -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-slide-up')">
+                    <div class="h-24 flex items-center justify-center mb-6 overflow-hidden">
+                        <div class="w-24 h-1 bg-stone-300 rounded-full animate-slide-up"></div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Slide Up</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Slide Up')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 特殊な出現 -->
+        <section id="special-entrances" class="mb-24">
+            <div class="text-center mb-16 reveal">
+                <span class="block text-gold text-2xl mb-2"><i class="fa-solid fa-star-of-david"></i></span>
+                <h2 class="text-3xl font-display text-stone-700">Special Entrances</h2>
+                <div class="w-12 h-0.5 bg-gold/50 mx-auto mt-4"></div>
             </div>
             
-            <!-- スクロールダウン -->
-            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
-                <span class="text-[10px] tracking-[0.2em] text-white">SCROLL</span>
-                <div class="w-[1px] h-12 bg-white"></div>
-            </div>
-        </section>
-
-        <!-- AUTHORITY / CONCEPT SECTION -->
-        <section id="concept" class="py-24 md:py-32 bg-bg relative">
-            <div class="container mx-auto px-6 max-w-5xl">
-                <div class="flex flex-col md:flex-row gap-12 items-start md:items-stretch">
-                    
-                    <!-- 左側：縦書き見出し -->
-                    <div class="md:w-1/4 flex justify-center md:justify-end reveal-elem">
-                        <h3 class="tategaki text-2xl md:text-3xl font-bold text-sumi leading-relaxed tracking-widest border-r border-sumi/10 pr-8 py-4">
-                            業界が震感。<br>常識への挑戦状。
-                        </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Rotate In -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-rotate-in')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="w-14 h-14 border border-stone-400 rotate-45 animate-rotate-in"></div>
                     </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Rotate In</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Rotate In')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
 
-                    <!-- 右側：本文 -->
-                    <div class="md:w-3/4 pt-4 md:pt-12 reveal-elem delay-200">
-                        <p class="text-base md:text-lg leading-loose text-sub font-medium mb-8">
-                            柔らかさ、吸水性、肌触り。<br>
-                            これまでのティッシュが追い求めてきた「機能」を、我々はすべて捨て去った。<br><br>
-                            求めたのは、<span class="text-sumi font-bold border-b border-gold">圧倒的な「硬度」</span>と<span class="text-sumi font-bold border-b border-gold">「美」</span>のみ。<br>
-                            NASA素材研究チームも注目する（予定の）、最先端テクノロジーと伝統工芸の融合。<br>
-                            これはもはや日用品ではない。あなたのデスクを支配する、崇高なオブジェである。
-                        </p>
-                        
-                        <!-- 実績バッジ（家紋風） -->
-                        <div class="flex flex-wrap gap-6 mt-12 border-t border-sumi/10 pt-8">
-                            <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 border border-sumi flex items-center justify-center rounded-full bg-white">
-                                    <span class="text-xl">硬</span>
-                                </div>
-                                <div class="text-xs tracking-wider">
-                                    <span class="block text-gray-400">HARDNESS</span>
-                                    <span class="block font-bold">モース硬度 10</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 border border-sumi flex items-center justify-center rounded-full bg-white">
-                                    <span class="text-xl">水</span>
-                                </div>
-                                <div class="text-xs tracking-wider">
-                                    <span class="block text-gray-400">WATER PROOF</span>
-                                    <span class="block font-bold">吸水率 0.00%</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 border border-sumi flex items-center justify-center rounded-full bg-white">
-                                    <span class="text-xl">金</span>
-                                </div>
-                                <div class="text-xs tracking-wider">
-                                    <span class="block text-gray-400">AWARD</span>
-                                    <span class="block font-bold">世界過酷展 金賞</span>
-                                </div>
-                            </div>
-                        </div>
+                 <!-- Light Speed In -->
+                 <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-light-speed-in')">
+                    <div class="h-24 flex items-center justify-center mb-6 overflow-hidden">
+                        <div class="text-2xl font-display text-accent italic animate-light-speed-in">Swiftly</div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Light Speed</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Light Speed In')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Roll In -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-roll-in')">
+                    <div class="h-24 flex items-center justify-center mb-6 overflow-hidden">
+                        <div class="w-12 h-12 rounded-full border border-gold flex items-center justify-center animate-roll-in text-gold"><i class="fa-solid fa-leaf"></i></div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Roll In</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Roll In')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jack In The Box -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-jack-in-the-box')">
+                    <div class="h-24 flex items-center justify-center mb-6 overflow-hidden">
+                        <div class="w-12 h-12 bg-rose text-white flex items-center justify-center text-xl font-display animate-jack-in-the-box shadow-md rounded-sm">Hi!</div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Jack In Box</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Jack In The Box')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FEATURES SECTION -->
-        <section id="features" class="py-24 bg-white relative overflow-hidden">
-            <!-- 縦の罫線装飾 -->
-            <div class="absolute top-0 left-12 w-[1px] h-full bg-sumi/5 hidden md:block"></div>
-            <div class="absolute top-0 right-12 w-[1px] h-full bg-sumi/5 hidden md:block"></div>
+        <!-- 3. 注目・強調 -->
+        <section id="attention" class="mb-24">
+            <div class="text-center mb-16 reveal">
+                <span class="block text-gold text-2xl mb-2"><i class="fa-regular fa-bell"></i></span>
+                <h2 class="text-3xl font-display text-stone-700">Attention Effects</h2>
+                <div class="w-12 h-0.5 bg-gold/50 mx-auto mt-4"></div>
+            </div>
 
-            <div class="container mx-auto px-6 max-w-6xl">
-                <div class="text-center mb-20 reveal-elem">
-                    <span class="text-gold text-xs tracking-[0.3em] block mb-4">FEATURES</span>
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold tracking-widest text-sumi">
-                        三つの絶対領域
-                    </h2>
-                </div>
-
-                <!-- Feature 1 -->
-                <div class="flex flex-col md:flex-row items-center gap-12 mb-32 group">
-                    <div class="md:w-1/2 w-full relative reveal-img">
-                        <div class="aspect-[4/3] bg-gray-200 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?q=80&w=1200&auto=format&fit=crop" 
-                                 alt="鋭利な硬度" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-sumi/10 mix-blend-multiply"></div>
-                        </div>
-                        <div class="absolute -bottom-6 -right-6 text-8xl text-gray-100 font-serif font-bold -z-10 select-none">
-                            壱
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Bounce -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-bounce-custom')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="w-4 h-4 bg-accent rounded-full animate-bounce-custom"></div>
                     </div>
-                    <div class="md:w-1/2 md:pl-10 reveal-elem">
-                        <h3 class="text-2xl font-bold mb-4 flex items-center gap-4">
-                            <span class="w-8 h-[1px] bg-gold"></span>
-                            金剛石被覆
-                            <span class="text-xs font-normal text-gray-400 ml-2">DIAMOND COATING</span>
-                        </h3>
-                        <p class="text-sub leading-loose text-justify">
-                            鼻を近づけた瞬間、本能が警告する圧倒的な硬度。
-                            表面にはマイクロ・ダイヤモンドコーティングを施し、一切の摩擦を許さない。
-                            柔らかさを求める軟弱な心ごとかき消す、冷徹なまでの硬さを実現しました。
-                        </p>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Bounce</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Bounce')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Feature 2 -->
-                <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-32 group">
-                    <div class="md:w-1/2 w-full relative reveal-img">
-                        <div class="aspect-[4/3] bg-gray-200 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=1200&auto=format&fit=crop" 
-                                 alt="完全撥水" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                             <div class="absolute inset-0 bg-sumi/10 mix-blend-multiply"></div>
-                        </div>
-                        <div class="absolute -bottom-6 -left-6 text-8xl text-gray-100 font-serif font-bold -z-10 select-none">
-                            弐
-                        </div>
+                <!-- Pulse -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-pulse')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="w-14 h-14 border border-rose rounded-full animate-pulse flex items-center justify-center text-rose"><i class="fa-regular fa-heart"></i></div>
                     </div>
-                    <div class="md:w-1/2 md:pr-10 reveal-elem">
-                        <h3 class="text-2xl font-bold mb-4 flex items-center gap-4">
-                            <span class="w-8 h-[1px] bg-gold"></span>
-                            完全撥水
-                            <span class="text-xs font-normal text-gray-400 ml-2">WATER REPELLENT</span>
-                        </h3>
-                        <p class="text-sub leading-loose text-justify">
-                            涙も、鼻水も、すべて弾き返す。<br>
-                            「吸い取る」というティッシュの概念を根底から覆す、驚異の撥水性。
-                            何も吸収しない。何も受け入れない。ただそこに在るだけの、孤高の存在です。
-                        </p>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Pulse</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Pulse')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Feature 3 -->
-                <div class="flex flex-col md:flex-row items-center gap-12 group">
-                    <div class="md:w-1/2 w-full relative reveal-img">
-                        <div class="aspect-[4/3] bg-gray-200 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1533062602773-49d7f0eb9825?q=80&w=1200&auto=format&fit=crop" 
-                                 alt="金属の質感" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                             <div class="absolute inset-0 bg-sumi/10 mix-blend-multiply"></div>
-                        </div>
-                        <div class="absolute -bottom-6 -right-6 text-8xl text-gray-100 font-serif font-bold -z-10 select-none">
-                            参
-                        </div>
+                <!-- Rubber Band -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-rubber-band')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                         <span class="inline-block px-4 py-1 border border-stone-400 text-stone-500 rounded-full animate-rubber-band text-sm">Button</span>
                     </div>
-                    <div class="md:w-1/2 md:pl-10 reveal-elem">
-                        <h3 class="text-2xl font-bold mb-4 flex items-center gap-4">
-                            <span class="w-8 h-[1px] bg-gold"></span>
-                            永劫の輝き
-                            <span class="text-xs font-normal text-gray-400 ml-2">ETERNITY</span>
-                        </h3>
-                        <p class="text-sub leading-loose text-justify">
-                            使い捨て文化へのアンチテーゼ。<br>
-                            チタン合金とカーボンファイバーの複合素材は、錆びることなく、朽ちることなく、孫の代まで受け継がれます。
-                            「一生モノのティッシュ」という、かつてない価値体験をあなたに。
-                        </p>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Rubber Band</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Rubber Band')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Shake X -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-shake-x')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="text-rose animate-shake-x text-xl font-display">Invalid Input</div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Shake X</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Shake X')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Shake Y -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-shake-y')">
+                     <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="text-stone-400 animate-shake-y text-2xl"><i class="fa-regular fa-thumbs-down"></i></div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Shake Y</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Shake Y')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Head Shake -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-head-shake')">
+                     <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center animate-head-shake text-stone-500"><i class="fa-regular fa-face-meh"></i></div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Head Shake</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Head Shake')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Swing -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-swing')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                         <div class="origin-top animate-swing flex flex-col items-center">
+                             <div class="w-px h-6 bg-stone-300"></div>
+                             <div class="w-16 h-10 border border-gold bg-goldLight/20 flex items-center justify-center text-xs text-stone-600 font-display">Shop</div>
+                         </div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Swing</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Swing')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tada -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-tada')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                         <div class="text-3xl text-gold animate-tada"><i class="fa-solid fa-gift"></i></div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Tada</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Tada')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Heartbeat -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-heartbeat')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="text-3xl text-rose animate-heartbeat"><i class="fa-solid fa-heart"></i></div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Heartbeat</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Heartbeat')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                 <!-- Jello -->
+                 <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-jello')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="px-3 py-1 bg-stone-100 rounded text-stone-500 animate-jello">Soft</div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Jello</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Jello')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                 <!-- Wobble -->
+                 <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-wobble')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="w-10 h-10 bg-accent/50 rounded-full animate-wobble blur-[1px]"></div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Wobble</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Wobble')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+                
+                 <!-- Flash -->
+                 <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-flash')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="w-12 h-12 bg-gold rounded-full animate-flash opacity-80"></div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Flash</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Flash')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- MAIN CTA -->
-        <section class="py-32 bg-sumi text-bg relative overflow-hidden flex flex-col items-center justify-center text-center">
-            <!-- 背景装飾 -->
-            <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
+        <!-- 4. 3D & Flip -->
+        <section id="flippers" class="mb-24">
+            <div class="text-center mb-16 reveal">
+                 <span class="block text-gold text-2xl mb-2"><i class="fa-solid fa-rotate-left"></i></span>
+                <h2 class="text-3xl font-display text-stone-700">Flip & 3D</h2>
+                <div class="w-12 h-0.5 bg-gold/50 mx-auto mt-4"></div>
+            </div>
             
-            <div class="relative z-10 container mx-auto px-6 reveal-elem">
-                <p class="text-gold tracking-[0.5em] mb-6 text-sm">INVITATION</p>
-                <h2 class="text-3xl md:text-5xl font-bold leading-normal mb-12 tracking-wider">
-                    観賞用として、<br>お迎えください。
-                </h2>
-                
-                <a href="#order" class="btn-vertical inline-block bg-bg text-sumi px-8 py-20 text-xl font-bold tracking-[0.5em] tategaki border border-gold relative overflow-hidden group">
-                    <span class="relative z-10">予約注文ノ儀</span>
-                    <div class="absolute inset-0 bg-gold transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100 z-0"></div>
-                </a>
-                
-                <p class="mt-8 text-sm text-gray-400 tracking-widest">
-                    ※現在、お届けまで三ヶ月待ち
-                </p>
-            </div>
-        </section>
-
-        <!-- SPECS & REVIEWS -->
-        <section id="specs" class="py-24 bg-bg relative">
-            <div class="container mx-auto px-6 max-w-4xl">
-                
-                <!-- Specs -->
-                <div class="mb-24 reveal-elem">
-                    <h3 class="text-center text-2xl font-bold mb-12 flex items-center justify-center gap-4">
-                        <span class="w-12 h-[1px] bg-sumi"></span>
-                        仕様書
-                        <span class="w-12 h-[1px] bg-sumi"></span>
-                    </h3>
-                    
-                    <dl class="border-t border-sumi/20">
-                        <div class="grid grid-cols-3 border-b border-sumi/20 py-6">
-                            <dt class="col-span-1 font-bold text-sumi pl-4 border-l-4 border-gold">主素材</dt>
-                            <dd class="col-span-2 text-sub">チタン合金（玉鋼処理）、カーボンファイバー</dd>
-                        </div>
-                        <div class="grid grid-cols-3 border-b border-sumi/20 py-6">
-                            <dt class="col-span-1 font-bold text-sumi pl-4 border-l-4 border-gold">重量</dt>
-                            <dd class="col-span-2 text-sub">250g / 枚（文鎮として最適）</dd>
-                        </div>
-                        <div class="grid grid-cols-3 border-b border-sumi/20 py-6">
-                            <dt class="col-span-1 font-bold text-sumi pl-4 border-l-4 border-gold">用途</dt>
-                            <dd class="col-span-2 text-sub">観賞用、インテリア、文鎮、護身用<br><span class="text-xs text-red-800">※鼻をかむ行為は推奨されません</span></dd>
-                        </div>
-                        <div class="grid grid-cols-3 border-b border-sumi/20 py-6">
-                            <dt class="col-span-1 font-bold text-sumi pl-4 border-l-4 border-gold">生産国</dt>
-                            <dd class="col-span-2 text-sub">日本（燕三条 提携工場）</dd>
-                        </div>
-                    </dl>
-                </div>
-
-                <!-- Reviews -->
-                <div class="reveal-elem">
-                    <h3 class="text-center text-2xl font-bold mb-16 flex items-center justify-center gap-4">
-                        <span class="w-12 h-[1px] bg-sumi"></span>
-                        愛用者の声
-                        <span class="w-12 h-[1px] bg-sumi"></span>
-                    </h3>
-
-                    <div class="flex flex-wrap justify-center gap-8">
-                        <!-- Review 1 -->
-                        <div class="w-full md:w-auto bg-white p-8 shadow-lg border-t-2 border-gold relative max-w-sm">
-                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-sumi text-white px-4 py-1 text-xs tracking-widest">
-                                30代 男性 / 武道家
-                            </div>
-                            <div class="flex flex-row-reverse h-48 justify-center gap-6">
-                                <p class="tategaki text-lg font-bold leading-relaxed text-sumi">
-                                    鼻をかもうとして<br>怪我をしましたが、<br>その美しさに<br>感動しました。
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Review 2 -->
-                        <div class="w-full md:w-auto bg-white p-8 shadow-lg border-t-2 border-gold relative max-w-sm">
-                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-sumi text-white px-4 py-1 text-xs tracking-widest">
-                                50代 女性 / 主婦
-                            </div>
-                            <div class="flex flex-row-reverse h-48 justify-center gap-6">
-                                <p class="tategaki text-lg font-bold leading-relaxed text-sumi">
-                                    泥棒が入った時、<br>これで撃退できました。<br>まさに命の恩人です。
-                                </p>
-                            </div>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Flip -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-flip')">
+                    <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="w-16 h-20 bg-stone-100 text-stone-600 border border-stone-200 flex items-center justify-center text-2xl font-display animate-flip shadow-sm">A</div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Flip</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Flip')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
                     </div>
                 </div>
 
-            </div>
-        </section>
-
-        <!-- FINAL OFFER (CLOSING) -->
-        <section id="order" class="py-32 bg-gray-100 relative">
-            <div class="container mx-auto px-6 max-w-5xl">
-                <div class="bg-white shadow-2xl overflow-hidden flex flex-col md:flex-row">
-                    <!-- Image -->
-                    <div class="md:w-1/2 relative min-h-[400px]">
-                        <img src="https://images.unsplash.com/photo-1542456073-67ba7e4a1c5d?q=80&w=1200&auto=format&fit=crop" 
-                             alt="ディスプレイスタンド" class="absolute inset-0 w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">
-                            <span class="bg-gold text-white px-3 py-1 text-xs inline-block w-max mb-2">今ダケ特典</span>
-                            <p class="text-white font-bold text-lg">専用ディスプレイスタンド（強化ガラス製）</p>
-                            <p class="text-gray-300 text-sm">これに入れて飾れば、リビングが美術館に。</p>
-                        </div>
+                <!-- Flip In X -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-flip-in-x')">
+                     <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="px-6 py-3 bg-rose text-white rounded-sm animate-flip-in-x font-display">Menu Item</div>
                     </div>
-                    
-                    <!-- Offer Content -->
-                    <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center items-center text-center">
-                        <h2 class="text-2xl font-bold mb-2">鋼鉄の涙 <span class="text-sm font-normal block mt-1">THE STEEL TEAR</span></h2>
-                        <div class="w-12 h-[2px] bg-gold my-6"></div>
-                        
-                        <div class="mb-8">
-                            <p class="text-gray-400 line-through text-sm">通常価格 12,800円</p>
-                            <p class="text-4xl md:text-5xl font-bold text-accent font-serif mt-2">
-                                <span class="text-xl text-sumi mr-2">セット価格</span>9,800<span class="text-base text-sumi ml-1">円（税込）</span>
-                            </p>
-                        </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Flip In X</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Flip In X')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
 
-                        <a href="#" class="w-full bg-sumi text-white py-5 text-lg font-bold tracking-widest hover:bg-gold transition-colors shadow-xl mb-4 group">
-                            購入手続キへ進ム
-                            <span class="block text-[10px] font-normal tracking-normal text-gray-400 group-hover:text-white mt-1">※外部決済ページへ移動します</span>
-                        </a>
-                        
-                        <p class="text-xs text-gray-500 leading-relaxed text-justify mt-4">
-                            ※本製品はジョークグッズ、あるいは高度な工芸品です。実際に鼻をかむと怪我をする恐れがあります。使用による損害について、当社は一切の責任を負いません。
-                        </p>
+                <!-- Flip In Y -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-flip-in-y')">
+                     <div class="h-24 flex items-center justify-center mb-6">
+                        <div class="w-16 h-20 bg-goldLight text-stone-700 flex items-center justify-center font-display text-xl animate-flip-in-y">Card</div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Flip In Y</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Flip In Y')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FOOTER -->
-        <footer class="bg-sumi text-gray-500 py-16 border-t border-gray-800">
-            <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="tategaki h-24 text-sm tracking-widest border-l border-gray-700 pl-4">
-                    鋼鉄の涙製作所
-                </div>
-                
-                <div class="flex flex-col md:flex-row gap-8 text-xs tracking-wider">
-                    <a href="#" class="hover:text-gold transition-colors">特定商取引法に基づく表記</a>
-                    <a href="#" class="hover:text-gold transition-colors">プライバシーポリシー</a>
-                    <a href="#" class="hover:text-gold transition-colors">お問い合わせ</a>
-                </div>
-                
-                <p class="text-xs font-serif tracking-widest">
-                    &copy; 2024 Steel Tear Project. All Rights Reserved.
-                </p>
+        <!-- 5. テキストと装飾 -->
+        <section id="text-decor" class="mb-24">
+            <div class="text-center mb-16 reveal">
+                 <span class="block text-gold text-2xl mb-2"><i class="fa-solid fa-signature"></i></span>
+                <h2 class="text-3xl font-display text-stone-700">Typography</h2>
+                <div class="w-12 h-0.5 bg-gold/50 mx-auto mt-4"></div>
             </div>
-        </footer>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tracking In -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-tracking-in')">
+                    <div class="h-24 flex items-center justify-center mb-6 overflow-hidden">
+                        <div class="text-xl font-display text-stone-800 tracking-widest animate-tracking-in uppercase">Elegance</div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Tracking In</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Tracking In')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Blur In -->
+                <div class="anim-card rounded-xl p-8 relative group" onclick="replayAnim(this, 'animate-blur-in')">
+                     <div class="h-24 flex items-center justify-center mb-6 overflow-hidden">
+                        <div class="text-xl font-display italic text-stone-600 animate-blur-in">Focus</div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Blur In</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Blur In')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Floating -->
+                <div class="anim-card rounded-xl p-8 relative group">
+                     <div class="h-24 flex items-center justify-center mb-6 overflow-hidden">
+                        <div class="w-12 h-12 bg-gradient-to-tr from-goldLight to-white rounded-full animate-float shadow-lg border border-white"></div>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-100 pt-4">
+                        <h3 class="text-lg font-medium text-stone-700 font-display">Floating</h3>
+                        <button class="text-stone-300 hover:text-gold transition-colors relative" onclick="event.stopPropagation(); copyText(this, 'Floating')">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
 
-    <!-- Animation Script -->
+    <footer class="bg-stone-100 py-12 border-t border-stone-200 text-center">
+        <div class="container mx-auto px-6">
+            <p class="text-stone-500 font-display mb-4">
+                Designed for Sophisticated Web Experiences
+            </p>
+            <div class="text-gold opacity-50 text-sm">
+                &copy; 2026 Animation Collection
+            </div>
+        </div>
+    </footer>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Loading Animation
-            const loader = document.getElementById('loader');
-            setTimeout(() => {
-                loader.style.opacity = '0';
+        // クリックでアニメーションをリプレイする関数
+        function replayAnim(element, animClass) {
+            const target = element.querySelector('.' + animClass);
+            if (!target) return;
+            
+            // クラスを一度削除
+            target.classList.remove(animClass);
+            
+            // リフローを強制
+            void target.offsetWidth;
+            
+            // クラスを再付与
+            target.classList.add(animClass);
+        }
+
+        // コピー機能
+        function copyText(button, text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const tooltip = button.querySelector('.tooltip');
+                tooltip.classList.add('show');
                 setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 1000);
-            }, 1500);
+                    tooltip.classList.remove('show');
+                }, 1500);
+            });
+        }
 
-            // Intersection Observer for Animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
-            };
+        // スクロール時のフェードイン（Intersection Observer）
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
-            const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-slow, .reveal-elem, .reveal-img');
-            animatedElements.forEach(el => observer.observe(el));
-
-            // Parallax Effect for Hero
-            window.addEventListener('scroll', () => {
-                const scrolled = window.scrollY;
-                const heroBg = document.getElementById('hero-bg');
-                if (heroBg) {
-                    heroBg.style.transform = `scale(1.1) translateY(${scrolled * 0.4}px)`;
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
                 }
             });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
