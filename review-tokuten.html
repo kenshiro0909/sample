@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【レビュー特典】Gemini×Github</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        heading: ['"Outfit"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#fbfaf6',     /* 淡いベージュ背景 */
+                            text: '#4a4a4a',   /* 濃いグレーテキスト */
+                            accent: '#c4a661', /* ゴールドアクセント */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fbfaf6;
+            color: #4a4a4a;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.03), 0 10px 15px -3px rgba(0, 0, 0, 0.03);
+        }
+        /* Custom Scrollbar for code blocks */
+        .code-scroll::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        .code-scroll::-webkit-scrollbar-track {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        .code-scroll::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+        .code-scroll::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col items-center py-16 px-4 sm:px-6 lg:px-8">
+
+    <!-- Header Section -->
+    <header class="text-center mb-16 max-w-3xl mx-auto animate-[fadeIn_0.5s_ease-out] w-full">
+        <div class="inline-flex items-center justify-center p-3 bg-white/80 shadow-sm rounded-2xl mb-8 border border-white/50 backdrop-blur-sm">
+            <i data-lucide="sparkles" class="text-yellow-500 w-5 h-5"></i>
+        </div>
+        
+        <h1 class="font-heading mb-6 leading-tight">
+            <span class="block text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-800 tracking-tight mb-2">
+                Gemini <span class="text-slate-300 font-light mx-1">×</span> Github
+            </span>
+            <span class="inline-block relative">
+                <span class="relative z-10 text-xl sm:text-2xl font-bold text-blue-600 tracking-widest uppercase">Special Review Bonus</span>
+                <span class="absolute bottom-1 left-0 w-full h-3 bg-blue-100/60 -z-0 transform -skew-x-12"></span>
+            </span>
+        </h1>
+        
+        <!-- ヘッダー画像追加 -->
+        <div class="mb-10 rounded-2xl overflow-hidden shadow-xl shadow-slate-200/50 border border-white/60">
+            <img src="https://raw.githubusercontent.com/kenshiro0909/site-test/main/assets/Gemini_Generated_Image_vv70z5vv70z5vv70.png" alt="Header Visual" class="w-full h-auto object-cover">
+        </div>
+
+        <div class="space-y-4">
+            <p class="text-slate-600 text-lg leading-relaxed font-medium tracking-wide">
+                『BRAINレビュー＆Threads引用』<br>
+                ありがとうございました🔥
+            </p>
+            <p class="text-slate-500 text-sm">
+                下記がレビュー特典になります！<br>ぜひ、ご活用くださいませ✨️
+            </p>
+        </div>
+    </header>
+
+    <main class="w-full max-w-4xl space-y-20">
+
+        <!-- Section 1 -->
+        <section class="glass-panel rounded-3xl p-6 sm:p-10 relative overflow-hidden group transition-all duration-500 hover:shadow-2xl hover:shadow-blue-900/5 hover:-translate-y-1">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-600 opacity-80"></div>
+            
+            <div class="flex items-center gap-4 mb-8">
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-50 text-blue-600 font-heading font-bold text-lg shadow-inner">01</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-800 tracking-tight">
+                    高品質記事サイト生産プロンプト
+                </h2>
+            </div>
+
+            <!-- Section Image (16:9 Aspect Ratio) -->
+            <div class="w-full aspect-video rounded-2xl overflow-hidden mb-8 shadow-lg shadow-slate-200/50 border border-slate-100">
+                <img src="https://raw.githubusercontent.com/kenshiro0909/site-test/main/assets/kouhinsituseisannpuronpt.jpg" alt="Writing workspace" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+            </div>
+
+            <div class="space-y-8 text-slate-600">
+                <div class="bg-blue-50/50 border border-blue-100 rounded-xl p-5 transition-colors hover:bg-blue-50">
+                    <p class="font-bold text-blue-800 mb-2 flex items-center gap-2 text-sm uppercase tracking-wider">
+                        <i data-lucide="link" class="w-4 h-4"></i> Link
+                    </p>
+                    <a href="https://kenshiro0909.github.io/Gemi-hub/GemiCustomize.html" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500 underline break-all transition-colors flex items-center gap-1 font-medium font-heading">
+                        https://kenshiro0909.github.io/Gemi-hub/GemiCustomize.html
+                        <i data-lucide="external-link" class="w-3 h-3"></i>
+                    </a>
+                </div>
+
+                <div>
+                    <p class="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500"></i>
+                        上記のLINKサイトは、下記の手順を実行して一瞬で作成したものです🥺
+                    </p>
+                    
+                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                        <p class="text-sm leading-relaxed">サイトの内容（note記事）などをそのまま添付し、下記プロンプトと一緒にGemini『canvas』機能で送信してください。</p>
+                    </div>
+                </div>
+
+                <!-- Copy Block 1 -->
+                <div class="relative shadow-lg shadow-slate-900/5 rounded-xl overflow-hidden border border-slate-200">
+                    <div class="flex justify-between items-center bg-slate-800 px-5 py-3 border-b border-slate-700">
+                        <span class="text-xs text-slate-300 font-heading font-bold tracking-widest uppercase">Prompt</span>
+                        <button onclick="copyToClipboard('prompt1', this)" class="group flex items-center gap-2 text-xs text-white bg-slate-700 hover:bg-blue-600 px-4 py-1.5 rounded-lg border border-slate-600 hover:border-blue-500 transition-all duration-300">
+                            <i data-lucide="copy" class="w-3 h-3 group-hover:scale-110 transition-transform"></i>
+                            <span class="copy-text font-medium">Copy</span>
+                        </button>
+                    </div>
+                    <pre class="bg-slate-900 p-6 overflow-x-auto code-scroll"><code id="prompt1" class="text-sm font-mono text-emerald-400 block whitespace-pre-wrap leading-relaxed">｛記事などの文章をそのままここに添付｝
+上記の文章をそのまま一切改変せずにサイトに最適な形で挿入してサイトを完成させて下さい。</code></pre>
+                </div>
+
+                <div class="pt-2 text-center">
+                    <a href="https://www.threads.com/@kenshiro_ai.fukugyo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-all duration-300 bg-white px-6 py-3 rounded-full shadow-sm hover:shadow-md border border-slate-100 hover:border-blue-100 group">
+                        <i data-lucide="at-sign" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+                        <span class="text-sm font-medium">サイトができたらThreadsでメンションしてくれると喜びます✨️</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="glass-panel rounded-3xl p-6 sm:p-10 relative overflow-hidden group transition-all duration-500 hover:shadow-2xl hover:shadow-purple-900/5 hover:-translate-y-1">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-400 to-purple-600 opacity-80"></div>
+
+            <div class="flex items-center gap-4 mb-8">
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-purple-50 text-purple-600 font-heading font-bold text-lg shadow-inner">02</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-800 tracking-tight">
+                    ポートフォリオHTMLテンプレ配布
+                </h2>
+            </div>
+
+            <!-- Section Image (16:9 Aspect Ratio) -->
+            <div class="w-full aspect-video rounded-2xl overflow-hidden mb-8 shadow-lg shadow-slate-200/50 border border-slate-100">
+                <img src="https://raw.githubusercontent.com/kenshiro0909/site-test/main/assets/portfoliotempre.jpg" alt="Web Design Portfolio" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+            </div>
+
+            <div class="space-y-8 text-slate-600">
+                <p class="font-bold text-slate-800 flex items-start gap-3">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0"></i>
+                    <span>『画像、リンク、文章』をお好みで変えるだけで、同じクオリティのサイトが簡単に手に入ります✨️</span>
+                </p>
+
+                <div class="bg-purple-50/50 border border-purple-100 rounded-xl p-6 shadow-sm">
+                    <h3 class="font-bold text-purple-800 mb-4 flex items-center gap-2 text-sm uppercase tracking-wider font-heading">
+                        <i data-lucide="info" class="w-4 h-4"></i> How to use
+                    </h3>
+                    <ul class="space-y-3 text-sm leading-relaxed text-slate-700">
+                        <li class="flex gap-3">
+                            <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-purple-400 mt-2"></span>
+                            Gemini 新規チャット → 『canvas』で、下記のコードをそのままコピーして、送信してお使いください。
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-purple-400 mt-2"></span>
+                            プレビュー画面が表示されるので、画像やリンクなど、お好みで変更していきましょう✨️
+                        </li>
+                    </ul>
+                    <div class="mt-4 pt-4 border-t border-purple-100/50">
+                        <span class="text-xs text-purple-700 bg-white inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-purple-100">
+                            <i data-lucide="alert-circle" class="w-3 h-3"></i>
+                            表示されない場合は新規チャットで複数回送り直してください。
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Copy Block 2 (Long Code) -->
+                <div class="relative shadow-xl shadow-slate-900/5 rounded-xl overflow-hidden border border-slate-200">
+                    <div class="flex justify-between items-center bg-slate-800 px-5 py-3 border-b border-slate-700">
+                        <span class="text-xs text-slate-300 font-heading font-bold tracking-widest uppercase">HTML / React Code</span>
+                        <button onclick="copyToClipboard('prompt2', this)" class="group flex items-center gap-2 text-xs text-white bg-purple-600 hover:bg-purple-500 px-5 py-2 rounded-lg shadow-lg shadow-purple-900/20 transition-all duration-300 transform active:scale-95 font-bold tracking-wide">
+                            <i data-lucide="copy" class="w-3 h-3 group-hover:scale-110 transition-transform"></i>
+                            <span class="copy-text">Copy Code</span>
+                        </button>
+                    </div>
+                    <div class="relative group/code">
+                        <pre class="bg-slate-900 p-6 rounded-b-xl overflow-x-auto overflow-y-auto max-h-[400px] code-scroll text-xs font-mono text-slate-300 leading-relaxed"><code id="prompt2">&lt;!DOCTYPE html&gt;
+&lt;html lang="ja" class="dark"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Daiki Portfolio&lt;/title&gt;
+    &lt;!-- Tailwind CSS --&gt;
+    &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;
+    &lt;!-- React & ReactDOM --&gt;
+    &lt;script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"&gt;&lt;/script&gt;
+    &lt;script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"&gt;&lt;/script&gt;
+    &lt;!-- Babel for JSX --&gt;
+    &lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;
+    
+    &lt;!-- Fonts --&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600;700&family=Jost:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Great+Vibes&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet"&gt;
+    
+    &lt;script&gt;
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        en: ['"Jost"', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        script: ['"Great Vibes"', 'cursive'],
+                        luxury: ['"Cinzel"', 'serif'],
+                        elegant: ['"Cormorant Garamond"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#121212',
+                            dark: '#1a1a1a',
+                            gold: '#c4a661',
+                            lightGold: '#e6cf8b',
+                            gray: '#888888',
+                            lightGray: '#f5f5f5',
+                            white: '#ffffff',
+                            line: '#06C755',
+                            note: '#41C9B4'
+                        }
+                    },
+                    animation: {
+                        'spin-slow': 'spin 12s linear infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'fade-in-slow': 'fadeIn 2s ease-out forwards',
+                        'pan-mobile': 'pan 3s ease-in-out infinite alternate',   // Fastest for Mobile
+                        'pan-desktop': 'pan 15s ease-in-out infinite alternate', // 15s for PC
+                    },
+                    keyframes: {
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        pan: {
+                            '0%': { transform: 'scale(1.2) translateX(-3%)' },
+                            '100%': { transform: 'scale(1.2) translateX(3%)' }
+                        }
+                    },
+                    transitionTimingFunction: {
+                        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
+                    }
+                }
+            }
+        }
+    &lt;/script&gt;
+
+    &lt;style&gt;
+        body {
+            font-feature-settings: "palt";
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: 0.05em;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #c4a661;
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(196, 166, 97, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        body.hovering .cursor-outline {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(196, 166, 97, 0.1);
+            border-color: #c4a661;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c4a661;
+        }
+
+        ::selection {
+            background: #c4a661;
+            color: #fff;
+        }
+
+        /* Reveal Animations */
+        .reveal-text {
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .reveal-text.visible {
+            clip-path: inset(0 0 0 0);
+        }
+
+        /* Auto Reveal Animation - Load Based (For Hero) */
+        .reveal-auto {
+            animation: revealAutoAnim 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s forwards;
+            clip-path: inset(0 0 100% 0); /* Start hidden */
+        }
+        @keyframes revealAutoAnim {
+            0% { clip-path: inset(0 0 100% 0); }
+            100% { clip-path: inset(0 0 0 0); }
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1.2s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+        }
+
+        /* Image Mask Animation */
+        .img-mask-container {
+            position: relative;
+            overflow: hidden;
+            background-color: #000;
+            box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .img-mask-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #c4a661;
+            z-index: 2;
+            transform: scaleY(1);
+            transform-origin: bottom;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .img-mask-container.visible .img-mask-overlay {
+            transform: scaleY(0);
+            transform-origin: top;
+        }
+        .img-mask-img {
+            transform: scale(1); 
+            transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .img-mask-container:hover .img-mask-img {
+            transform: scale(1.03);
+        }
+
+        /* Loader */
+        .loader-overlay {
+            position: fixed;
+            inset: 0;
+            background: #121212;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .loader-overlay.hidden {
+            transform: translateY(-100%);
+        }
+
+        .snap-x-mandatory {
+            scroll-snap-type: x mandatory;
+        }
+        .snap-center {
+            scroll-snap-align: center;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .text-glow {
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.9), 0 0 20px rgba(196, 166, 97, 0.4);
+        }
+        .text-shadow-sm {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        
+        /* Gold Gradient Text */
+        .text-gradient-gold {
+            background: linear-gradient(to bottom right, #c4a661, #f9eac3, #c4a661);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            text-shadow: 0 0 30px rgba(196, 166, 97, 0.3);
+        }
+        
+        /* Vertical Text Utility */
+        .writing-vertical {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            letter-spacing: 0.2em;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class="bg-brand-black text-brand-white transition-colors duration-500"&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+
+    &lt;script type="text/babel"&gt;
+        const { useState, useEffect, useRef } = React;
+
+        /* --- Icons --- */
+        const Icon = ({ children, size = 24, className = "" }) =&gt; (
+            &lt;svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}&gt;
+                {children}
+            &lt;/svg&gt;
+        );
+        const ArrowRight = (props) =&gt; &lt;Icon {...props}&gt;&lt;path d="M5 12h14"/&gt;&lt;path d="m12 5 7 7-7 7"/&gt;&lt;/Icon&gt;;
+        const ThreadsIcon = (props) =&gt; &lt;Icon {...props}&gt;&lt;path d="M12.754 13.93c1.776 0 2.21-1.353 2.164-2.833-.042-1.343-.455-2.072-1.334-2.228-.908-.16-1.57.517-1.57 1.48 0 .825.59 1.502 1.503 1.502.835 0 1.517-.614 1.517-1.482 0-1.72-1.258-3.085-3.033-3.085-1.9960-3.61 1.536-3.61 3.515 0 1.944 1.535 3.543 3.568 3.543 1.156 0 2.152-.47 2.766-1.25.105.474.343 1.34.42 1.696.53 2.458-1.467 4.195-4.14 4.195-2.738 0-4.63-2.148-4.63-5.013 0-2.887 2.05-5.185 4.92-5.185 2.155 0 3.708 1.196 4.417 2.37.116-.273.28-.62.433-1.025C15.08 7.372 12.793 6 10.05 6 5.61 6 2 9.688 2 14.238c0 4.502 3.655 8.127 8.163 8.127 3.328 0 5.86-1.895 6.666-4.99l.06-.232H14.5c-.53 1.32-2.074 2.39-3.71 2.39-2.316 0-4.175-1.87-4.175-4.223 0-2.313 1.832-4.186 4.14-4.186 1.433 0 2.287.89 2.287 1.884 0 .736-.554 1.144-1.095 1.144-.814 0-1.205-.623-1.205-1.22 0-.306.07-.63.2-.84.236.425.47.887.666 1.31.05.105.093.208.134.31z"/&gt;&lt;/Icon&gt;;
+        
+        /* --- Custom Cursor --- */
+        const CustomCursor = () =&gt; {
+            const dotRef = useRef(null);
+            const outlineRef = useRef(null);
+
+            useEffect(() =&gt; {
+                const moveCursor = (e) =&gt; {
+                    const { clientX, clientY } = e;
+                    if (dotRef.current) {
+                        dotRef.current.style.left = `${clientX}px`;
+                        dotRef.current.style.top = `${clientY}px`;
+                    }
+                    if (outlineRef.current) {
+                        outlineRef.current.animate({
+                            left: `${clientX}px`,
+                            top: `${clientY}px`
+                        }, { duration: 500, fill: "forwards" });
+                    }
+                };
+                const handleHoverStart = () =&gt; document.body.classList.add('hovering');
+                const handleHoverEnd = () =&gt; document.body.classList.remove('hovering');
+                window.addEventListener('mousemove', moveCursor);
+                const hoverables = document.querySelectorAll('a, button, .hover-target');
+                hoverables.forEach(el =&gt; {
+                    el.addEventListener('mouseenter', handleHoverStart);
+                    el.addEventListener('mouseleave', handleHoverEnd);
+                });
+                return () =&gt; {
+                    window.removeEventListener('mousemove', moveCursor);
+                    hoverables.forEach(el =&gt; {
+                        el.removeEventListener('mouseenter', handleHoverStart);
+                        el.removeEventListener('mouseleave', handleHoverEnd);
+                    });
+                };
+            }, []);
+            return (
+                &lt;&gt;
+                    &lt;div ref={dotRef} className="cursor-dot hidden md:block"&gt;&lt;/div&gt;
+                    &lt;div ref={outlineRef} className="cursor-outline hidden md:block"&gt;&lt;/div&gt;
+                &lt;/&gt;
+            );
+        };
+
+        /* --- Components --- */
+        
+        const SectionHeading = ({ number, title, subtitle }) =&gt; (
+            &lt;div className="flex flex-col md:flex-row items-baseline gap-4 md:gap-8 mb-12 md:mb-16 fade-up"&gt;
+                &lt;span className="text-sm font-en tracking-widest text-brand-gold font-bold"&gt;
+                    {number}
+                &lt;/span&gt;
+                &lt;div className="flex-1"&gt;
+                    &lt;h2 className="text-4xl md:text-6xl font-en font-light uppercase tracking-tight mb-2"&gt;
+                        {title}
+                    &lt;/h2&gt;
+                    &lt;p className="text-sm md:text-base font-sans opacity-60 tracking-wider"&gt;
+                        {subtitle}
+                    &lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div className="hidden md:block w-32 h-[1px] bg-brand-gold/30 self-center"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        );
+
+        const ContentCard = ({ number, title, desc, image, link, note, aspectRatio = "aspect-video" }) =&gt; (
+            &lt;a href={link} target="_blank" className="group block relative fade-in w-full"&gt;
+                &lt;div className={`img-mask-container ${aspectRatio} mb-6 w-full flex items-center justify-center bg-[#1a1a1a]`}&gt;
+                    &lt;div className="img-mask-overlay"&gt;&lt;/div&gt;
+                    &lt;img src={image} alt={title} className="img-mask-img object-cover" /&gt;
+                    {note && (
+                        &lt;div className="absolute top-0 right-0 bg-brand-gold text-brand-black text-[10px] font-bold px-3 py-1.5 z-10 opacity-0 group-hover:opacity-100 transition-opacity"&gt;
+                            {note}
+                        &lt;/div&gt;
+                    )}
+                &lt;/div&gt;
+                &lt;div className="flex items-start gap-4"&gt;
+                    &lt;span className="text-xs font-en font-bold text-brand-gold mt-1"&gt;{number}&lt;/span&gt;
+                    &lt;div className="space-y-2 flex-1"&gt;
+                        &lt;h3 className="text-lg md:text-xl font-serif font-medium group-hover:text-brand-gold transition-colors duration-300"&gt;
+                            {title}
+                        &lt;/h3&gt;
+                        &lt;p className="text-sm text-gray-400 font-sans leading-relaxed border-l border-brand-gold/20 pl-3"&gt;
+                            {desc}
+                        &lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;div className="opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300"&gt;
+                        &lt;ArrowRight className="text-brand-gold" /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/a&gt;
+        );
+
+        const TimelineItem = ({ year, title, desc, current }) =&gt; (
+            &lt;div className={`relative pl-8 md:pl-0 md:grid md:grid-cols-12 gap-8 py-8 border-l md:border-l-0 border-brand-gold/20 fade-up ${current ? 'opacity-100' : 'opacity-80'}`}&gt;
+                &lt;div className={`absolute left-[-5px] top-10 w-2.5 h-2.5 rounded-full z-10 md:hidden ${current ? 'bg-brand-gold' : 'bg-gray-700'}`}&gt;&lt;/div&gt;
+                &lt;div className="md:col-span-3 md:text-right md:pr-12 md:border-r md:border-brand-gold/20 relative"&gt;
+                    &lt;div className={`hidden md:block absolute right-[-5px] top-2 w-2.5 h-2.5 rounded-full z-10 ${current ? 'bg-brand-gold' : 'bg-gray-700'}`}&gt;&lt;/div&gt;
+                    &lt;span className="text-xs font-en font-bold tracking-widest text-brand-gold block mb-1"&gt;{year}&lt;/span&gt;
+                    {current && &lt;span className="inline-block text-[10px] bg-brand-gold text-brand-black px-1 py-0.5 font-bold mb-2"&gt;NOW&lt;/span&gt;}
+                &lt;/div&gt;
+                &lt;div className="md:col-span-9"&gt;
+                    &lt;h4 className={`text-xl font-serif mb-3 ${current ? 'text-brand-gold' : ''}`}&gt;{title}&lt;/h4&gt;
+                    &lt;p className="text-sm font-sans leading-relaxed opacity-70"&gt;{desc}&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+
+        /* --- Main App --- */
+        const App = () =&gt; {
+            const [loading, setLoading] = useState(true);
+
+            useEffect(() =&gt; {
+                const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+                const observer = new IntersectionObserver((entries) =&gt; {
+                    entries.forEach(entry =&gt; {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            if (entry.target.classList.contains('img-mask-container')) {
+                                setTimeout(() =&gt; entry.target.classList.add('visible'), 200);
+                            }
+                        }
+                    });
+                }, observerOptions);
+
+                const elements = document.querySelectorAll('.fade-up, .fade-in, .reveal-text, .img-mask-container');
+                elements.forEach(el =&gt; observer.observe(el));
+
+                setTimeout(() =&gt; setLoading(false), 1500);
+
+                // Force dark mode
+                document.documentElement.classList.add('dark');
+
+                return () =&gt; observer.disconnect();
+            }, [loading]);
+
+            const navItems = [
+                { label: 'PROJECTS', href: '#contents' },
+                { label: 'SERVICES', href: '#recommend' },
+                { label: 'BLOG', href: '#' }, 
+                { label: 'PROFILE', href: '#about' },
+            ];
+
+            return (
+                &lt;div className="relative bg-[#121212] min-h-screen"&gt;
+                    &lt;CustomCursor /&gt;
+                    
+                    {/* Loader */}
+                    &lt;div className={`loader-overlay ${!loading ? 'hidden' : ''}`}&gt;
+                        &lt;div className="text-center"&gt;
+                            &lt;h1 className="text-6xl md:text-8xl font-elegant italic text-white tracking-widest opacity-0 animate-[fadeInUp_1s_forwards]"&gt;
+                                Daiki
+                            &lt;/h1&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    {/* Navigation */}
+                    &lt;nav className="fixed w-full z-40 top-0 left-0 mix-blend-difference text-white"&gt;
+                        &lt;div className="max-w-[1440px] mx-auto px-6 h-24 flex justify-between items-center"&gt;
+                            &lt;a href="#" className="text-3xl md:text-4xl font-elegant italic tracking-[0.05em] text-white hover-target font-bold"&gt;
+                                Daiki Portfolio
+                            &lt;/a&gt;
+                            &lt;div className="flex items-center gap-8"&gt;
+                                &lt;div className="hidden md:flex gap-10 text-xs font-en font-medium tracking-[0.2em] uppercase"&gt;
+                                    {navItems.map((item, i) =&gt; (
+                                        &lt;a key={i} href={item.href} target={item.label === 'NOTE' ? '_blank' : '_self'} className="hover-target relative group py-2"&gt;
+                                            {item.label}
+                                            &lt;span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-right group-hover:origin-left"&gt;&lt;/span&gt;
+                                        &lt;/a&gt;
+                                    ))}
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/nav&gt;
+
+                    {/* Hero Section */}
+                    &lt;header className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"&gt;
+                        &lt;div className="absolute inset-0 z-0"&gt;
+                            {/* Animated Background */}
+                            &lt;div className="w-full h-full bg-cover bg-center animate-pan-mobile md:animate-pan-desktop" 
+                                 style={{backgroundImage: 'url("https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop")'}}&gt;
+                            &lt;/div&gt;
+                            &lt;div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]"&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div className="relative z-10 w-full max-w-[1440px] px-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-center"&gt;
+                            &lt;div className="md:col-span-12 lg:col-span-10 lg:col-start-2"&gt;
+                                {/* Auto-reveal text */}
+                                &lt;div className="reveal-auto text-center md:text-left"&gt;
+                                    &lt;div className="mb-8 inline-block relative"&gt;
+                                        &lt;div className="absolute inset-0 border-y border-white/20 bg-white/5 backdrop-blur-sm -skew-x-12"&gt;&lt;/div&gt;
+                                        &lt;h1 className="relative z-10 text-3xl md:text-5xl lg:text-6xl font-luxury font-bold text-white leading-tight tracking-[0.15em] drop-shadow-2xl py-2 px-8"&gt;
+                                            WEB&lt;span className="text-brand-gold mx-3 font-serif font-light"&gt;×&lt;/span&gt;CREATIVE
+                                        &lt;/h1&gt;
+                                    &lt;/div&gt;
+                                    
+                                    &lt;div className="mt-2 flex flex-row items-baseline justify-center md:justify-start gap-2 md:gap-4 pl-1 md:pl-2"&gt;
+                                        &lt;span className="text-gradient-gold font-serif font-bold text-5xl sm:text-6xl md:text-8xl lg:text-9xl tracking-wider drop-shadow-xl whitespace-nowrap"&gt;
+                                            理想の未来
+                                        &lt;/span&gt;
+                                        &lt;span className="text-white/90 font-serif font-light text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-[0.2em] mb-0 md:mb-3 whitespace-nowrap"&gt;
+                                            をつくる
+                                        &lt;/span&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div className="max-w-2xl fade-up delay-300 mt-12 text-center md:text-left mx-auto md:mx-0"&gt;
+                                    
+                                    &lt;div className="mb-12"&gt;
+                                        &lt;p className="text-white font-serif text-xl md:text-2xl lg:text-3xl leading-relaxed tracking-widest font-light text-shadow-sm whitespace-nowrap md:whitespace-normal"&gt;
+                                            あなたのビジネスに&lt;br/&gt;
+                                            &lt;span className="relative inline-block mt-2"&gt;
+                                                「価値」という名の新しい柱を。
+                                                &lt;span className="absolute -bottom-2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-80"&gt;&lt;/span&gt;
+                                            &lt;/span&gt;
+                                        &lt;/p&gt;
+                                    &lt;/div&gt;
+
+                                    &lt;div className="flex flex-wrap gap-6 justify-center md:justify-start"&gt;
+                                        &lt;a href="#" target="_blank" className="hover-target px-12 py-4 border border-brand-note text-white text-xs font-bold font-en uppercase tracking-[0.25em] hover:bg-brand-note hover:border-brand-note hover:text-white transition-all duration-300 shadow-lg bg-transparent"&gt;
+                                            BLOG
+                                        &lt;/a&gt;
+                                        &lt;a href="#" target="_blank" className="hover-target px-12 py-4 border border-brand-line text-white text-xs font-bold font-en uppercase tracking-[0.25em] hover:bg-brand-line hover:border-brand-line hover:text-white transition-all duration-300 shadow-lg bg-transparent"&gt;
+                                            CONTACT
+                                        &lt;/a&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        
+                        &lt;div className="absolute bottom-10 left-10 text-white/50 text-[10px] font-en tracking-widest writing-vertical hidden md:block"&gt;
+                            SCROLL DOWN
+                        &lt;/div&gt;
+                    &lt;/header&gt;
+
+                    {/* Contents Section */}
+                    &lt;section id="contents" className="py-32 px-6 bg-[#121212] relative"&gt;
+                        &lt;div className="max-w-[1200px] mx-auto"&gt;
+                            &lt;SectionHeading number="01" title="Projects" subtitle="～知識と経験を凝縮した、課題解決へのアプローチ～" /&gt;
+
+                            &lt;div className="flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-x-8 md:gap-y-16"&gt;
+                                &lt;ContentCard 
+                                    number="01"
+                                    title="Webデザイン完全攻略"
+                                    desc="【受講生実績：3ヶ月で案件獲得】現役デザイナー監修。基礎から応用まで、未経験からプロを目指すための完全ロードマップ。"
+                                    image="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop"
+                                    link="#"
+                                    note="DESIGN"
+                                    aspectRatio="aspect-video"
+                                /&gt;
+                                &lt;ContentCard 
+                                    number="02"
+                                    title="クリエイターズコミュニティ"
+                                    desc="孤独な作業を終わらせる、熱量の高い仲間との環境。技術共有とフィードバックで、楽しみながら成長速度を加速させる場所。"
+                                    image="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                                    link="#"
+                                    note="COMMUNITY"
+                                    aspectRatio="aspect-video"
+                                /&gt;
+                                &lt;ContentCard 
+                                    number="03"
+                                    title="SNSマーケティング講座"
+                                    desc="AI×心理学で『集客』を自動化する。フォロワー数に依存せず、あなたのファンを増やしビジネスを加速させます。"
+                                    image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop"
+                                    link="#" 
+                                    note="MARKETING"
+                                    aspectRatio="aspect-video"
+                                 /&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/section&gt;
+
+                    {/* Recommended Section */}
+                    &lt;section id="recommend" className="py-32 px-6 bg-[#1a1a1a]"&gt;
+                        &lt;div className="max-w-[1200px] mx-auto"&gt;
+                             &lt;SectionHeading number="02" title="Services" subtitle="～提供可能なスキルとサービス～" /&gt;
+                             
+                             &lt;div className="md:w-2/3 ml-auto"&gt;
+                                &lt;div className="grid grid-cols-1 md:grid-cols-2 gap-8"&gt;
+                                    &lt;div className="md:col-span-1"&gt;
+                                        &lt;h3 className="text-2xl font-serif mb-6 leading-relaxed"&gt;
+                                            &lt;span className="text-brand-gold font-bold"&gt;ビジネスを加速させるWeb制作。&lt;/span&gt;&lt;br/&gt;
+                                            ただ作るだけでなく、成果にコミット。
+                                        &lt;/h3&gt;
+                                        &lt;p className="text-sm opacity-60 font-sans leading-7 mb-8"&gt;
+                                            クライアント様の課題をヒアリングし、最適なソリューションを提案します。
+                                            デザインからコーディング、公開後の運用までトータルでサポートいたします。
+                                        &lt;/p&gt;
+                                    &lt;/div&gt;
+                                    &lt;div className="md:col-span-1"&gt;
+                                        &lt;ContentCard 
+                                            number="SVC"
+                                            title="ホームページ制作一式"
+                                            desc="コーポレートサイト、LP、ポートフォリオなど。レスポンシブ対応、SEO対策も標準装備で、集客に強いサイトを構築します。"
+                                            image="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1974&auto=format&fit=crop"
+                                            link="#"
+                                            note="WEB DEV"
+                                            aspectRatio="aspect-video"
+                                        /&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                             &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/section&gt;
+
+                    {/* Story Section */}
+                    &lt;section id="about" className="py-32 px-6 bg-[#121212] overflow-hidden"&gt;
+                        &lt;div className="max-w-[1200px] mx-auto"&gt;
+                            &lt;SectionHeading number="03" title="Story" subtitle="～元ブラック企業社員が独立して自由を手にするまでの物語～" /&gt;
+
+                            &lt;div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center"&gt;
+                                &lt;div className="lg:col-span-5 relative fade-up"&gt;
+                                    &lt;div className="img-mask-container aspect-[9/16] w-full max-w-md mx-auto z-10 relative"&gt;
+                                        &lt;div className="img-mask-overlay"&gt;&lt;/div&gt;
+                                        &lt;img src="https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?q=80&w=2070&auto=format&fit=crop" alt="profile" className="img-mask-img object-cover" /&gt;
+                                        
+                                        &lt;div className="absolute bottom-4 right-2 z-20 pointer-events-none"&gt;
+                                            &lt;h3 className="text-5xl md:text-7xl lg:text-8xl font-script text-brand-gold text-glow select-none drop-shadow-xl"&gt;
+                                                Daiki
+                                            &lt;/h3&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div className="lg:col-span-6 lg:col-start-7 space-y-10 fade-up"&gt;
+                                    &lt;div className="space-y-6"&gt;
+                                        &lt;h3 className="text-3xl font-serif leading-tight"&gt;
+                                            何度失敗しても、&lt;br/&gt;
+                                            &lt;span className="text-brand-gold italic"&gt;自分らしさ&lt;/span&gt;は捨てない。
+                                        &lt;/h3&gt;
+                                        &lt;p className="font-sans text-sm leading-8 opacity-70"&gt;
+                                            はじめまして、WebクリエイターのDaikiです。&lt;br/&gt;
+                                            かつては営業職として、深夜まで続く残業とノルマに追われる日々でした。&lt;br/&gt;
+                                            「自分の人生はこのままでいいのか」&lt;br/&gt;
+                                            そんな不安を抱えながら、帰宅後のわずかな時間で独学を始めました。
+                                        &lt;/p&gt;
+                                        &lt;p className="font-sans text-sm leading-8 opacity-70"&gt;
+                                            最初はコードも全く理解できず、挫折の連続。&lt;br/&gt;
+                                            それでも&lt;strong className="text-brand-gold"&gt;「場所や時間に縛られずに働きたい」&lt;/strong&gt;という一心で継続しました。&lt;br/&gt;
+                                            現在はフリーランスとして独立し、かつての自分と同じように&lt;br/&gt;
+                                            現状を変えたいと願う人々の支援を行っています。
+                                        &lt;/p&gt;
+                                    &lt;/div&gt;
+                                    &lt;div className="flex flex-wrap gap-4 border-t border-brand-gold/20 pt-8"&gt;
+                                        &lt;a href="#" target="_blank" className="hover-target flex items-center justify-center px-8 py-4 bg-transparent border border-white text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-gold hover:border-brand-gold hover:text-black transition-all duration-300 shadow-lg"&gt;
+                                            X (Twitter)
+                                        &lt;/a&gt;
+                                        &lt;a href="#" target="_blank" className="hover-target flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-white text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-note hover:border-brand-note hover:text-white transition-all duration-300 shadow-lg"&gt;
+                                            Blog
+                                        &lt;/a&gt;
+                                        &lt;a href="#" target="_blank" className="hover-target flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-white text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-line hover:border-brand-line hover:text-white transition-all duration-300 shadow-lg"&gt;
+                                            Instagram
+                                        &lt;/a&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/section&gt;
+
+                    {/* Philosophy Section */}
+                    &lt;section id="values" className="py-32 px-6 bg-[#1a1a1a]"&gt;
+                        &lt;div className="max-w-[1200px] mx-auto"&gt;
+                            &lt;SectionHeading number="04" title="Values" subtitle="～大切にしている価値観～" /&gt;
+                            
+                            &lt;div className="grid grid-cols-1 md:grid-cols-3 gap-8"&gt;
+                                {[
+                                    {title: "Together", subtitle: "共に創る", desc: "一方的な提案ではなく、クライアント様と共に伴走し、最高のクリエイティブを創り上げます。"},
+                                    {title: "Quality", subtitle: "細部への拘り", desc: "1ピクセルのズレ、0.1秒のアニメーションにも妥協せず、ユーザーの心を動かす体験を設計します。"},
+                                    {title: "Challenge", subtitle: "挑戦と進化", desc: "常に最新の技術とトレンドをキャッチアップし、現状に満足することなくスキルを磨き続けます。"}
+                                ].map((item, i) =&gt; (
+                                    &lt;div key={i} className="p-8 border border-brand-gold/10 hover:border-brand-gold/40 transition-colors duration-500 fade-up bg-white/5 backdrop-blur-sm"&gt;
+                                        &lt;h4 className="text-3xl font-en font-light mb-2 text-brand-gold"&gt;{item.title}&lt;/h4&gt;
+                                        &lt;h5 className="text-lg font-serif mb-4"&gt;{item.subtitle}&lt;/h5&gt;
+                                        &lt;p className="text-sm font-sans opacity-60 leading-relaxed text-justify"&gt;{item.desc}&lt;/p&gt;
+                                    &lt;/div&gt;
+                                ))}
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/section&gt;
+
+                    {/* Trajectory Section */}
+                    &lt;section id="trajectory" className="py-32 px-6 bg-[#121212]"&gt;
+                        &lt;div className="max-w-[1000px] mx-auto"&gt;
+                             &lt;SectionHeading number="05" title="Trajectory" subtitle="～これまでの軌跡～" /&gt;
+
+                             &lt;div className="space-y-0"&gt;
+                                &lt;TimelineItem 
+                                    year="01" 
+                                    title="新卒で営業会社に入社" 
+                                    desc="期待を胸に入社するも、理想と現実のギャップに苦しむ。毎日の飛び込み営業で心身ともに疲弊する日々。"
+                                /&gt;
+                                &lt;TimelineItem 
+                                    year="02" 
+                                    title="プログラミングとの出会い" 
+                                    desc="現状を変えるため、独学でHTML/CSSの学習を開始。エラーの連続で何度も挫折しかけるが、少しずつ形になる喜びを知る。"
+                                /&gt;
+                                &lt;TimelineItem 
+                                    year="03" 
+                                    title="初案件の獲得と退職" 
+                                    desc="クラウドソーシングで初めてのWeb制作案件を受注。自分のスキルでお金を稼ぐ経験をし、独立を決意して退職。"
+                                /&gt;
+                                &lt;TimelineItem 
+                                    year="04" 
+                                    title="フリーランスとして活動開始" 
+                                    desc="実績ゼロからのスタート。SNSでの発信と並行して制作活動を行い、徐々に信頼とクライアントを獲得していく。"
+                                /&gt;
+                                &lt;TimelineItem 
+                                    year="05" 
+                                    title="事業拡大とコミュニティ設立" 
+                                    desc="制作だけでなく、コンサルティングや後進の育成にも注力。同じ志を持つ仲間が集まるコミュニティを立ち上げる。"
+                                /&gt;
+                                &lt;TimelineItem 
+                                    year="06" 
+                                    title="理想のライフスタイルを実現" 
+                                    desc="時間と場所に縛られない働き方を確立。現在は自身の経験を還元し、多くのクリエイターの独立を支援している。"
+                                    current={true}
+                                /&gt;
+                             &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/section&gt;
+
+                    {/* Footer */}
+                    &lt;footer className="py-24 px-6 bg-brand-black text-white border-t border-white/10"&gt;
+                        &lt;div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8"&gt;
+                            &lt;div className="text-center md:text-left"&gt;
+                                &lt;h2 className="text-3xl md:text-4xl font-elegant italic tracking-[0.05em] font-bold text-white mb-4"&gt;
+                                    Daiki Portfolio
+                                &lt;/h2&gt;
+                                &lt;p className="text-xs font-sans opacity-40 tracking-widest"&gt;
+                                    © 2024 Daiki Portfolio. All Rights Reserved.
+                                &lt;/p&gt;
+                            &lt;/div&gt;
+                            &lt;div className="flex gap-8"&gt;
+                                &lt;a href="#" className="hover-target text-sm font-en font-bold uppercase tracking-widest hover:text-brand-gold transition-colors"&gt;Twitter&lt;/a&gt;
+                                &lt;a href="#" className="hover-target text-sm font-en font-bold uppercase tracking-widest hover:text-brand-gold transition-colors"&gt;Instagram&lt;/a&gt;
+                                &lt;a href="#" className="hover-target text-sm font-en font-bold uppercase tracking-widest hover:text-brand-gold transition-colors"&gt;Contact&lt;/a&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/footer&gt;
+                &lt;/div&gt;
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(&lt;App /&gt;);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+プレビュー可能な形式で出力して。</code></pre>
+                        <div class="absolute inset-0 pointer-events-none rounded-b-lg shadow-[inset_0_-20px_20px_rgba(0,0,0,0.5)]"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 text-sm pb-8">
+            <p>&copy; Gemini × Github Campaign</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Copy to clipboard function
+        async function copyToClipboard(elementId, button) {
+            const codeElement = document.getElementById(elementId);
+            const textToCopy = codeElement.innerText;
+            const originalText = button.querySelector('.copy-text').textContent;
+            const icon = button.querySelector('svg');
+
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+                
+                // Visual feedback
+                button.querySelector('.copy-text').textContent = 'Copied!';
+                button.classList.add('bg-green-600', 'text-white', 'border-green-600');
+                
+                // Remove original classes
+                if(elementId === 'prompt2') {
+                     button.classList.remove('bg-purple-600', 'hover:bg-purple-500', 'shadow-purple-900/30');
+                } else {
+                     button.classList.remove('bg-slate-700', 'hover:bg-blue-600');
+                }
+                
+                // Restore after 2 seconds
+                setTimeout(() => {
+                    button.querySelector('.copy-text').textContent = originalText;
+                    button.classList.remove('bg-green-600', 'text-white', 'border-green-600');
+                    
+                    // Special styling restoration
+                    if(elementId === 'prompt2') {
+                        button.className = "group flex items-center gap-2 text-xs text-white bg-purple-600 hover:bg-purple-500 px-5 py-2 rounded-lg shadow-lg shadow-purple-900/20 transition-all duration-300 transform active:scale-95 font-bold tracking-wide";
+                    } else {
+                        button.className = "group flex items-center gap-2 text-xs text-white bg-slate-700 hover:bg-blue-600 px-4 py-1.5 rounded-lg border border-slate-600 hover:border-blue-500 transition-all duration-300";
+                    }
+                }, 2000);
+
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                button.querySelector('.copy-text').textContent = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
