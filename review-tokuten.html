@@ -6,13 +6,15 @@
     <title>【レビュー特典】Gemini×Github</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- フォントにNoto Serif JPを追加 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'serif'], // 明朝体を追加
                         heading: ['"Outfit"', 'sans-serif'],
                     },
                     colors: {
@@ -20,6 +22,20 @@
                             bg: '#fbfaf6',     /* 淡いベージュ背景 */
                             text: '#4a4a4a',   /* 濃いグレーテキスト */
                             accent: '#c4a661', /* ゴールドアクセント */
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                        'title-reveal': 'titleReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        titleReveal: {
+                            '0%': { opacity: '0', letterSpacing: '0.5em', filter: 'blur(10px)' },
+                            '100%': { opacity: '1', letterSpacing: '0.05em', filter: 'blur(0)' },
                         }
                     }
                 }
@@ -53,32 +69,51 @@
         .code-scroll::-webkit-scrollbar-thumb:hover {
             background: #64748b;
         }
+        
+        /* タイトルの装飾 */
+        .title-line {
+            display: inline-block;
+            position: relative;
+        }
+        .title-line::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: #4a4a4a;
+            animation: lineGrow 1s ease-out 1s forwards;
+        }
+        @keyframes lineGrow {
+            to { width: 100%; }
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col items-center py-16 px-4 sm:px-6 lg:px-8">
 
     <!-- Header Section -->
     <header class="text-center mb-16 max-w-3xl mx-auto animate-[fadeIn_0.5s_ease-out] w-full">
-        <div class="inline-flex items-center justify-center p-3 bg-white/80 shadow-sm rounded-2xl mb-8 border border-white/50 backdrop-blur-sm">
-            <i data-lucide="sparkles" class="text-yellow-500 w-5 h-5"></i>
+        <!-- タイトルデザイン変更 -->
+        <div class="mb-10 relative py-4">
+            <h1 class="font-serif leading-tight relative z-10">
+                <span class="block text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-800 tracking-tight mb-4 animate-title-reveal">
+                    Gemini <span class="text-slate-400 font-light mx-2 text-4xl align-middle">×</span> Github
+                </span>
+                <span class="inline-block relative overflow-hidden animate-[fadeInUp_1s_ease-out_0.5s_forwards] opacity-0">
+                    <span class="title-line relative z-10 text-xl sm:text-2xl text-slate-600 tracking-[0.2em] uppercase font-medium">
+                        Special Review Bonus
+                    </span>
+                </span>
+            </h1>
         </div>
         
-        <h1 class="font-heading mb-6 leading-tight">
-            <span class="block text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-800 tracking-tight mb-2">
-                Gemini <span class="text-slate-300 font-light mx-1">×</span> Github
-            </span>
-            <span class="inline-block relative">
-                <span class="relative z-10 text-xl sm:text-2xl font-bold text-blue-600 tracking-widest uppercase">Special Review Bonus</span>
-                <span class="absolute bottom-1 left-0 w-full h-3 bg-blue-100/60 -z-0 transform -skew-x-12"></span>
-            </span>
-        </h1>
-        
-        <!-- ヘッダー画像追加 -->
-        <div class="mb-10 rounded-2xl overflow-hidden shadow-xl shadow-slate-200/50 border border-white/60">
-            <img src="https://raw.githubusercontent.com/kenshiro0909/Gemi-hub/main/assets/Gemini_Generated_Image_vv70z5vv70z5vv70.png" alt="Header Visual" class="w-full h-auto object-cover">
+        <!-- ヘッダー画像 -->
+        <div class="mb-10 rounded-2xl overflow-hidden shadow-xl shadow-slate-200/50 border border-white/60 animate-fade-in-up" style="animation-delay: 0.3s;">
+            <img src="https://raw.githubusercontent.com/kenshiro0909/Gemi-hub/main/assets/Gemini_Generated_Image_vv70z5vv70z5vv70.png" alt="Header Visual" class="w-full h-auto object-cover" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop'">
         </div>
 
-        <div class="space-y-4">
+        <div class="space-y-4 animate-fade-in-up" style="animation-delay: 0.5s;">
             <p class="text-slate-600 text-lg leading-relaxed font-medium tracking-wide">
                 『BRAINレビュー＆Threads引用』<br>
                 ありがとうございました🔥
@@ -89,7 +124,7 @@
         </div>
     </header>
 
-    <main class="w-full max-w-4xl space-y-20">
+    <main class="w-full max-w-4xl space-y-20 animate-fade-in-up" style="animation-delay: 0.7s;">
 
         <!-- Section 1 -->
         <section class="glass-panel rounded-3xl p-6 sm:p-10 relative overflow-hidden group transition-all duration-500 hover:shadow-2xl hover:shadow-blue-900/5 hover:-translate-y-1">
@@ -104,13 +139,13 @@
 
             <!-- Section Image (16:9 Aspect Ratio) -->
             <div class="w-full aspect-video rounded-2xl overflow-hidden mb-8 shadow-lg shadow-slate-200/50 border border-slate-100">
-                <img src="https://raw.githubusercontent.com/kenshiro0909/Gemi-hub/main/assets/kouhinsituseisannpuronpt.jpg" alt="Writing workspace" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+                <img src="https://raw.githubusercontent.com/kenshiro0909/Gemi-hub/main/assets/kouhinsituseisannpuronpt.jpg" alt="Writing workspace" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" onerror="this.src='https://images.unsplash.com/photo-1499750310159-52f0f8373f71?q=80&w=2067&auto=format&fit=crop'">
             </div>
 
             <div class="space-y-8 text-slate-600">
                 <div class="bg-blue-50/50 border border-blue-100 rounded-xl p-5 transition-colors hover:bg-blue-50">
                     <p class="font-bold text-blue-800 mb-2 flex items-center gap-2 text-sm uppercase tracking-wider">
-                        <i data-lucide="link" class="w-4 h-4"></i> Link
+                        <i data-lucide="link" class="w-4 h-4"></i> 参考サイト
                     </p>
                     <a href="https://kenshiro0909.github.io/Gemi-hub/GemiCustomize.html" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500 underline break-all transition-colors flex items-center gap-1 font-medium font-heading">
                         https://kenshiro0909.github.io/Gemi-hub/GemiCustomize.html
@@ -121,7 +156,7 @@
                 <div>
                     <p class="font-bold text-slate-800 mb-3 flex items-center gap-2">
                         <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500"></i>
-                        上記のLINKサイトは、下記の手順を実行して一瞬で作成したものです🥺
+                        上記のリンクサイトは、下記の手順を実行して一瞬で作成したものです🥺
                     </p>
                     
                     <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
@@ -139,13 +174,17 @@
                         </button>
                     </div>
                     <pre class="bg-slate-900 p-6 overflow-x-auto code-scroll"><code id="prompt1" class="text-sm font-mono text-emerald-400 block whitespace-pre-wrap leading-relaxed">｛記事などの文章をそのままここに添付｝
-上記の文章をそのまま一切改変せずにサイトに最適な形で挿入してサイトを完成させて下さい。</code></pre>
+上記の文章をそのまま一切改変せずに、サイトに最適な形で挿入してサイトを完成させて下さい。なお、Githubのサイトで正しく表示されるHTMLコードで仕上げること。</code></pre>
                 </div>
 
-                <div class="pt-2 text-center">
-                    <a href="https://www.threads.com/@kenshiro_ai.fukugyo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-all duration-300 bg-white px-6 py-3 rounded-full shadow-sm hover:shadow-md border border-slate-100 hover:border-blue-100 group">
-                        <i data-lucide="at-sign" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
-                        <span class="text-sm font-medium">サイトができたらThreadsでメンションしてくれると喜びます✨️</span>
+                <!-- Threadsボタン -->
+                <div class="pt-4 text-center">
+                    <a href="https://www.threads.com/@kenshiro_ai.fukugyo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 text-white bg-black hover:bg-slate-800 transition-all duration-300 px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 group border border-slate-700/50 w-full sm:w-auto justify-center">
+                        <div class="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 transition-colors">
+                            <i data-lucide="at-sign" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-base font-bold tracking-wide">サイトができたらThreadsでメンションしてくれると喜びます✨️</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300"></i>
                     </a>
                 </div>
             </div>
@@ -158,13 +197,13 @@
             <div class="flex items-center gap-4 mb-8">
                 <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-purple-50 text-purple-600 font-heading font-bold text-lg shadow-inner">02</span>
                 <h2 class="text-xl sm:text-2xl font-bold text-slate-800 tracking-tight">
-                    ポートフォリオHTMLテンプレ配布
+                    HTMLテンプレ配布
                 </h2>
             </div>
 
             <!-- Section Image (16:9 Aspect Ratio) -->
             <div class="w-full aspect-video rounded-2xl overflow-hidden mb-8 shadow-lg shadow-slate-200/50 border border-slate-100">
-                <img src="https://raw.githubusercontent.com/kenshiro0909/Gemi-hub/main/assets/portfoliotempre.jpg" alt="Web Design Portfolio" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+                <img src="https://raw.githubusercontent.com/kenshiro0909/Gemi-hub/main/assets/portfoliotempre.jpg" alt="Web Design Portfolio" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop'">
             </div>
 
             <div class="space-y-8 text-slate-600">
@@ -195,17 +234,33 @@
                     </div>
                 </div>
 
-                <!-- Copy Block 2 (Long Code) -->
-                <div class="relative shadow-xl shadow-slate-900/5 rounded-xl overflow-hidden border border-slate-200">
-                    <div class="flex justify-between items-center bg-slate-800 px-5 py-3 border-b border-slate-700">
-                        <span class="text-xs text-slate-300 font-heading font-bold tracking-widest uppercase">HTML / React Code</span>
-                        <button onclick="copyToClipboard('prompt2', this)" class="group flex items-center gap-2 text-xs text-white bg-purple-600 hover:bg-purple-500 px-5 py-2 rounded-lg shadow-lg shadow-purple-900/20 transition-all duration-300 transform active:scale-95 font-bold tracking-wide">
-                            <i data-lucide="copy" class="w-3 h-3 group-hover:scale-110 transition-transform"></i>
-                            <span class="copy-text">Copy Code</span>
-                        </button>
-                    </div>
-                    <div class="relative group/code">
-                        <pre class="bg-slate-900 p-6 rounded-b-xl overflow-x-auto overflow-y-auto max-h-[400px] code-scroll text-xs font-mono text-slate-300 leading-relaxed"><code id="prompt2">&lt;!DOCTYPE html&gt;
+                <!-- Template Cards Grid -->
+                <div class="grid grid-cols-1 gap-8 mt-8">
+                    <!-- Card 1: Kenshiro Portfolio -->
+                    <div class="bg-white rounded-xl shadow-lg shadow-slate-200/50 border border-slate-200 overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+                        <!-- Card Header -->
+                        <div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+                            <div class="flex items-center gap-3 overflow-hidden">
+                                <div class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 flex-shrink-0">
+                                    <i data-lucide="layout-template" class="w-5 h-5"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <h3 class="font-bold text-slate-700 text-sm truncate">ケンシロウポートフォリオ</h3>
+                                    <p class="text-[10px] text-slate-400 font-mono truncate">HTML / React</p>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('prompt2', this)" class="group flex items-center gap-2 text-xs text-white bg-purple-600 hover:bg-purple-500 px-3 py-1.5 rounded-lg shadow-md shadow-purple-900/20 transition-all duration-300 active:scale-95 font-bold tracking-wide flex-shrink-0">
+                                <i data-lucide="copy" class="w-3 h-3 group-hover:scale-110 transition-transform"></i>
+                                <span class="copy-text">Copy</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Card Code Preview area -->
+                        <div class="relative bg-slate-900 flex-1 min-h-[200px] max-h-[300px] flex flex-col group/code">
+                            <div class="absolute top-0 right-0 p-2 z-10 pointer-events-none">
+                                <span class="text-[10px] text-slate-500 bg-slate-800/80 px-2 py-1 rounded backdrop-blur-sm">Preview</span>
+                            </div>
+                            <pre class="flex-1 p-4 overflow-auto code-scroll text-[10px] font-mono text-slate-400 leading-relaxed"><code id="prompt2">&lt;!DOCTYPE html&gt;
 &lt;html lang="ja" class="dark"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -834,68 +889,6 @@
                         &lt;/div&gt;
                     &lt;/section&gt;
 
-                    {/* Philosophy Section */}
-                    &lt;section id="values" className="py-32 px-6 bg-[#1a1a1a]"&gt;
-                        &lt;div className="max-w-[1200px] mx-auto"&gt;
-                            &lt;SectionHeading number="04" title="Values" subtitle="～大切にしている価値観～" /&gt;
-                            
-                            &lt;div className="grid grid-cols-1 md:grid-cols-3 gap-8"&gt;
-                                {[
-                                    {title: "Together", subtitle: "共に創る", desc: "一方的な提案ではなく、クライアント様と共に伴走し、最高のクリエイティブを創り上げます。"},
-                                    {title: "Quality", subtitle: "細部への拘り", desc: "1ピクセルのズレ、0.1秒のアニメーションにも妥協せず、ユーザーの心を動かす体験を設計します。"},
-                                    {title: "Challenge", subtitle: "挑戦と進化", desc: "常に最新の技術とトレンドをキャッチアップし、現状に満足することなくスキルを磨き続けます。"}
-                                ].map((item, i) =&gt; (
-                                    &lt;div key={i} className="p-8 border border-brand-gold/10 hover:border-brand-gold/40 transition-colors duration-500 fade-up bg-white/5 backdrop-blur-sm"&gt;
-                                        &lt;h4 className="text-3xl font-en font-light mb-2 text-brand-gold"&gt;{item.title}&lt;/h4&gt;
-                                        &lt;h5 className="text-lg font-serif mb-4"&gt;{item.subtitle}&lt;/h5&gt;
-                                        &lt;p className="text-sm font-sans opacity-60 leading-relaxed text-justify"&gt;{item.desc}&lt;/p&gt;
-                                    &lt;/div&gt;
-                                ))}
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                    &lt;/section&gt;
-
-                    {/* Trajectory Section */}
-                    &lt;section id="trajectory" className="py-32 px-6 bg-[#121212]"&gt;
-                        &lt;div className="max-w-[1000px] mx-auto"&gt;
-                             &lt;SectionHeading number="05" title="Trajectory" subtitle="～これまでの軌跡～" /&gt;
-
-                             &lt;div className="space-y-0"&gt;
-                                &lt;TimelineItem 
-                                    year="01" 
-                                    title="新卒で営業会社に入社" 
-                                    desc="期待を胸に入社するも、理想と現実のギャップに苦しむ。毎日の飛び込み営業で心身ともに疲弊する日々。"
-                                /&gt;
-                                &lt;TimelineItem 
-                                    year="02" 
-                                    title="プログラミングとの出会い" 
-                                    desc="現状を変えるため、独学でHTML/CSSの学習を開始。エラーの連続で何度も挫折しかけるが、少しずつ形になる喜びを知る。"
-                                /&gt;
-                                &lt;TimelineItem 
-                                    year="03" 
-                                    title="初案件の獲得と退職" 
-                                    desc="クラウドソーシングで初めてのWeb制作案件を受注。自分のスキルでお金を稼ぐ経験をし、独立を決意して退職。"
-                                /&gt;
-                                &lt;TimelineItem 
-                                    year="04" 
-                                    title="フリーランスとして活動開始" 
-                                    desc="実績ゼロからのスタート。SNSでの発信と並行して制作活動を行い、徐々に信頼とクライアントを獲得していく。"
-                                /&gt;
-                                &lt;TimelineItem 
-                                    year="05" 
-                                    title="事業拡大とコミュニティ設立" 
-                                    desc="制作だけでなく、コンサルティングや後進の育成にも注力。同じ志を持つ仲間が集まるコミュニティを立ち上げる。"
-                                /&gt;
-                                &lt;TimelineItem 
-                                    year="06" 
-                                    title="理想のライフスタイルを実現" 
-                                    desc="時間と場所に縛られない働き方を確立。現在は自身の経験を還元し、多くのクリエイターの独立を支援している。"
-                                    current={true}
-                                /&gt;
-                             &lt;/div&gt;
-                        &lt;/div&gt;
-                    &lt;/section&gt;
-
                     {/* Footer */}
                     &lt;footer className="py-24 px-6 bg-brand-black text-white border-t border-white/10"&gt;
                         &lt;div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8"&gt;
@@ -922,11 +915,664 @@
         root.render(&lt;App /&gt;);
     &lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-
-プレビュー可能な形式で出力して。</code></pre>
+&lt;/html&gt;</code></pre>
                         <div class="absolute inset-0 pointer-events-none rounded-b-lg shadow-[inset_0_-20px_20px_rgba(0,0,0,0.5)]"></div>
                     </div>
+                    </div>
+
+                    <!-- Card 2: Open Chat Note -->
+                    <div class="bg-white rounded-xl shadow-lg shadow-slate-200/50 border border-slate-200 overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+                        <div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+                            <div class="flex items-center gap-3 overflow-hidden">
+                                <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                    <i data-lucide="sticky-note" class="w-5 h-5"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <h3 class="font-bold text-slate-700 text-sm truncate">オプチャ専用ノート</h3>
+                                    <p class="text-[10px] text-slate-400 font-mono truncate">HTML Template</p>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('prompt3', this)" class="group flex items-center gap-2 text-xs text-white bg-purple-600 hover:bg-purple-500 px-3 py-1.5 rounded-lg shadow-md shadow-purple-900/20 transition-all duration-300 active:scale-95 font-bold tracking-wide flex-shrink-0">
+                                <i data-lucide="copy" class="w-3 h-3 group-hover:scale-110 transition-transform"></i>
+                                <span class="copy-text">Copy</span>
+                            </button>
+                        </div>
+                        <div class="relative bg-slate-900 flex-1 min-h-[200px] max-h-[300px] flex flex-col group/code">
+                            <div class="absolute top-0 right-0 p-2 z-10 pointer-events-none">
+                                <span class="text-[10px] text-slate-500 bg-slate-800/80 px-2 py-1 rounded backdrop-blur-sm">Preview</span>
+                            </div>
+                            <pre class="flex-1 p-4 overflow-auto code-scroll text-[10px] font-mono text-slate-400 leading-relaxed"><code id="prompt3">&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Community Portal&lt;/title&gt;
+    &lt;!-- Tailwind CSS (CDN) --&gt;
+    &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;
+    &lt;!-- Lucide Icons (CDN) --&gt;
+    &lt;script src="https://unpkg.com/lucide@latest"&gt;&lt;/script&gt;
+    
+    &lt;style&gt;
+        /* カスタムアニメーション定義 */
+        @keyframes subtle-pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.02); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        /* Tailwindの設定拡張（必要に応じて） */
+        .animate-subtle-pulse {
+            animation: subtle-pulse 2s infinite;
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-shimmer {
+            animation: shimmer 1.5s infinite;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4 relative overflow-hidden font-sans text-slate-800"&gt;
+
+    &lt;!-- 背景装飾 (明るいパステルカラーに変更) --&gt;
+    &lt;div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none"&gt;
+        &lt;div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-200/50 rounded-full blur-[100px] animate-[pulse_8s_ease-in-out_infinite]"&gt;&lt;/div&gt;
+        &lt;div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-200/40 rounded-full blur-[100px] animate-[pulse_10s_ease-in-out_infinite_reverse]"&gt;&lt;/div&gt;
+        &lt;div class="absolute top-[40%] left-[60%] w-[30%] h-[30%] bg-pink-200/40 rounded-full blur-[80px]"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="w-full max-w-md z-10 space-y-8"&gt;
+        
+        &lt;!-- ヘッダーエリア --&gt;
+        &lt;div class="text-center space-y-2 mb-4 animate-float"&gt;
+            &lt;h1 class="text-2xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-500"&gt;
+                WELCOME
+            &lt;/h1&gt;
+            &lt;p class="text-slate-500 text-sm"&gt;コミュニティポータルへようこそ&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- コンテナ --&gt;
+        &lt;div class="space-y-6"&gt;
+          
+            &lt;!-- 1. 特典受け取りリンク (緊急性・最優先) --&gt;
+            &lt;!-- 明るい背景でも目立つように影を調整 --&gt;
+            &lt;div class="relative group"&gt;
+                &lt;!-- 背景の発光エフェクト --&gt;
+                &lt;div class="absolute -inset-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400 rounded-2xl blur opacity-60 group-hover:opacity-100 transition duration-500 animate-subtle-pulse"&gt;&lt;/div&gt;
+                
+                &lt;!-- メインカード --&gt;
+                &lt;a href="https://kenshiro0909.github.io/contents-openchat-text/present-rule.html" class="relative block bg-gradient-to-br from-red-500 via-red-500 to-orange-500 rounded-2xl p-1 overflow-hidden transition-transform duration-300 transform group-hover:scale-[1.02] group-active:scale-[0.98] shadow-2xl shadow-red-200"&gt;
+                    &lt;div class="bg-gradient-to-br from-red-500/10 to-transparent absolute inset-0 z-0"&gt;&lt;/div&gt;
+                    
+                    &lt;!-- キラッと光るエフェクト --&gt;
+                    &lt;div class="absolute inset-0 z-10 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer" style="background-size: 200% 100%;"&gt;&lt;/div&gt;
+
+                    &lt;div class="relative z-20 bg-slate-900/5 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center justify-between h-full border border-white/20"&gt;
+                        
+                        &lt;!-- 緊急バッジ --&gt;
+                        &lt;div class="absolute top-3 right-3 flex items-center space-x-1 bg-white/90 text-red-600 text-[10px] font-bold px-2 py-1 rounded-full shadow-lg animate-bounce"&gt;
+                            &lt;!-- サイズ調整: w-[10px] h-[10px] --&gt;
+                            &lt;i data-lucide="clock" class="w-[10px] h-[10px]"&gt;&lt;/i&gt;
+                            &lt;span&gt;期限間近&lt;/span&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="flex items-center w-full mb-3"&gt;
+                            &lt;div class="bg-white/20 p-3 rounded-full mr-4 shadow-inner"&gt;
+                                &lt;i data-lucide="gift" class="text-white w-8 h-8 animate-[pulse_2s_infinite]"&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                            &lt;div class="flex-1"&gt;
+                                &lt;h2 class="text-xl font-bold text-white leading-tight flex items-center"&gt;
+                                    特典を受け取る
+                                    &lt;i data-lucide="zap" class="ml-2 text-yellow-200 fill-current w-[18px] h-[18px]"&gt;&lt;/i&gt;
+                                &lt;/h2&gt;
+                                &lt;p class="text-red-50 text-xs mt-1 font-medium opacity-90"&gt;
+                                    ※受け取り期限が迫っています
+                                &lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;!-- ボタン風装飾 --&gt;
+                        &lt;div class="w-full bg-white text-red-600 font-bold py-3 rounded-lg text-center flex items-center justify-center space-x-2 shadow-lg group-hover:bg-red-50 transition-colors mt-2"&gt;
+                            &lt;span&gt;今すぐ確認する&lt;/span&gt;
+                            &lt;!-- group-hoverでtranslateを制御 --&gt;
+                            &lt;i data-lucide="chevron-right" class="w-[18px] h-[18px] stroke-[3] transform transition-transform duration-300 group-hover:translate-x-1"&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;!-- 2. オープンチャットのルール (クリーン・信頼感・白背景対応) --&gt;
+            &lt;div class="relative group"&gt;
+                &lt;a href="https://kenshiro0909.github.io/contents-openchat-text/chat-rule.html" class="block relative bg-white/70 backdrop-blur-md border border-slate-200 hover:border-blue-400/50 rounded-2xl p-6 transition-all duration-300 hover:bg-white/90 shadow-lg shadow-slate-200/50 hover:shadow-blue-200/50 group-active:scale-[0.99]"&gt;
+                    &lt;div class="flex items-center justify-between"&gt;
+                        &lt;div class="flex items-center space-x-4"&gt;
+                            &lt;div class="bg-gradient-to-br from-blue-500 to-cyan-400 p-3 rounded-xl shadow-md transform rotate-3 group-hover:rotate-0 transition-transform duration-300"&gt;
+                                &lt;i data-lucide="shield-check" class="text-white w-6 h-6"&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                            &lt;div&gt;
+                                &lt;h3 class="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors"&gt;
+                                    オプチャのルール
+                                &lt;/h3&gt;
+                                &lt;p class="text-slate-500 text-xs mt-0.5"&gt;
+                                    参加前に必ずお読みください
+                                &lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        
+                        &lt;div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-blue-50 transition-colors"&gt;
+                            &lt;i data-lucide="chevron-right" class="text-slate-400 group-hover:text-blue-500 w-5 h-5"&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+
+        &lt;!-- フッター --&gt;
+        &lt;div class="text-center pt-8 opacity-40"&gt;
+            &lt;p class="text-[10px] text-slate-500"&gt;© 2024 Community Portal. All rights reserved.&lt;/p&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;!-- Lucide Iconsの初期化 --&gt;
+    &lt;script&gt;
+        lucide.createIcons();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            <div class="absolute inset-0 pointer-events-none rounded-b-lg shadow-[inset_0_-20px_20px_rgba(0,0,0,0.5)]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Open Chat Rules -->
+                    <div class="bg-white rounded-xl shadow-lg shadow-slate-200/50 border border-slate-200 overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+                        <div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+                            <div class="flex items-center gap-3 overflow-hidden">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-600 flex-shrink-0">
+                                    <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <h3 class="font-bold text-slate-700 text-sm truncate">オプチャのルール</h3>
+                                    <p class="text-[10px] text-slate-400 font-mono truncate">HTML Template</p>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('prompt4', this)" class="group flex items-center gap-2 text-xs text-white bg-purple-600 hover:bg-purple-500 px-3 py-1.5 rounded-lg shadow-md shadow-purple-900/20 transition-all duration-300 active:scale-95 font-bold tracking-wide flex-shrink-0">
+                                <i data-lucide="copy" class="w-3 h-3 group-hover:scale-110 transition-transform"></i>
+                                <span class="copy-text">Copy</span>
+                            </button>
+                        </div>
+                        <div class="relative bg-slate-900 flex-1 min-h-[200px] max-h-[300px] flex flex-col group/code">
+                            <div class="absolute top-0 right-0 p-2 z-10 pointer-events-none">
+                                <span class="text-[10px] text-slate-500 bg-slate-800/80 px-2 py-1 rounded backdrop-blur-sm">Preview</span>
+                            </div>
+                            <pre class="flex-1 p-4 overflow-auto code-scroll text-[10px] font-mono text-slate-400 leading-relaxed"><code id="prompt4">&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;オプチャの利用目的・ルール&lt;/title&gt;
+    &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet"&gt;
+    &lt;style&gt;
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #00c4cc 0%, #7d2ae8 100%); /* Canva-ish colors */
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class="min-h-screen flex items-center justify-center py-6 px-4 sm:px-6 lg:px-8"&gt;
+
+    &lt;div class="max-w-lg w-full space-y-8"&gt;
+        
+        &lt;!-- Main Card container --&gt;
+        &lt;div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"&gt;
+            
+            &lt;!-- Header Image/Banner Area --&gt;
+            &lt;div class="gradient-header h-32 flex items-center justify-center relative"&gt;
+                &lt;div class="absolute inset-0 bg-black opacity-10"&gt;&lt;/div&gt;
+                &lt;div class="text-white text-center z-10 px-4"&gt;
+                    &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 opacity-90" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;
+                        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0z" /&gt;
+                    &lt;/svg&gt;
+                    &lt;h1 class="text-xl font-bold tracking-wider text-white drop-shadow-md"&gt;コミュニティガイドライン&lt;/h1&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Content Area --&gt;
+            &lt;div class="p-6 sm:p-8 space-y-8"&gt;
+
+                &lt;!-- Section 1: Purpose --&gt;
+                &lt;section&gt;
+                    &lt;div class="flex items-center mb-4"&gt;
+                        &lt;div class="bg-indigo-100 p-2 rounded-full mr-3"&gt;
+                            &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;
+                                &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /&gt;
+                            &lt;/svg&gt;
+                        &lt;/div&gt;
+                        &lt;h2 class="text-lg font-bold text-gray-800 border-b-2 border-indigo-500 pb-1"&gt;【オプチャの利用目的】&lt;/h2&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="text-gray-700 space-y-3 text-sm sm:text-base leading-relaxed"&gt;
+                        &lt;p&gt;
+                            質疑応答・アップデート情報など連絡網として活用します。
+                        &lt;/p&gt;
+                        &lt;ul class="space-y-1 pl-1"&gt;
+                            &lt;li&gt;・不具合など見つかりましたらご連絡ください。&lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;div class="text-xs text-gray-500 bg-gray-50 p-3 rounded-lg border-l-4 border-gray-400 space-y-1"&gt;
+                            &lt;p&gt;※本業があるため『お返事・対応』にお時間頂く場合がございます。&lt;/p&gt;
+                            &lt;p&gt;※基本的に20時以降のお返事。&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/section&gt;
+
+                &lt;!-- Divider --&gt;
+                &lt;hr class="border-gray-200"&gt;
+
+                &lt;!-- Section 2: Rules --&gt;
+                &lt;section&gt;
+                    &lt;div class="flex items-center mb-4"&gt;
+                        &lt;div class="bg-red-100 p-2 rounded-full mr-3"&gt;
+                            &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;
+                                &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /&gt;
+                            &lt;/svg&gt;
+                        &lt;/div&gt;
+                        &lt;h2 class="text-lg font-bold text-gray-800 border-b-2 border-red-500 pb-1"&gt;【オプチャ内のルール】&lt;/h2&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="space-y-5 text-sm sm:text-base"&gt;
+                        
+                        &lt;!-- Rule 1 --&gt;
+                        &lt;div class="bg-red-50 p-4 rounded-lg border border-red-100"&gt;
+                            &lt;h3 class="font-bold text-red-800 mb-1"&gt;①23時以降のチャット禁止（守れない場合は即退会）&lt;/h3&gt;
+                            &lt;p class="text-gray-700 pl-4 text-sm"&gt;→ 他人の迷惑になるため。&lt;/p&gt;
+                        &lt;/div&gt;
+
+                        &lt;!-- Rule 2 --&gt;
+                        &lt;div class="pl-2 border-l-2 border-gray-200"&gt;
+                            &lt;h3 class="font-bold text-gray-800"&gt;②挨拶は不要です(通知が増えすぎるため)&lt;/h3&gt;
+                            &lt;p class="text-gray-500 text-xs mt-1"&gt;※管理者が不要なメッセージは削除する場合がございます。&lt;/p&gt;
+                        &lt;/div&gt;
+
+                        &lt;!-- Rule 3 --&gt;
+                        &lt;div class="bg-gray-50 p-4 rounded-lg border border-gray-200"&gt;
+                            &lt;h3 class="font-bold text-gray-900 mb-1"&gt;③不要な発言・礼儀ない人は&lt;span class="text-red-600 font-extrabold"&gt;【即強制退会】&lt;/span&gt;&lt;/h3&gt;
+                            &lt;p class="text-gray-600 text-xs mt-1 leading-relaxed"&gt;
+                                ※「勝手にリンクを送る」「他人を馬鹿にした発言をする」など、すべて強制退会の対象となります。
+                            &lt;/p&gt;
+                        &lt;/div&gt;
+
+                        &lt;!-- Rule 4 --&gt;
+                        &lt;div class="pl-2 border-l-2 border-indigo-200"&gt;
+                            &lt;h3 class="font-bold text-gray-800"&gt;④質問はわかりやすく丁寧にしてください。&lt;/h3&gt;
+                            &lt;p class="text-gray-600 text-sm mt-1 leading-relaxed"&gt;
+                                ・誰が、何を、どうしたくて、今どんな状況なのかなどを書き、背景と目的がわかるようにしてください。
+                            &lt;/p&gt;
+                        &lt;/div&gt;
+
+                    &lt;/div&gt;
+                &lt;/section&gt;
+
+                &lt;!-- Footer Message --&gt;
+                &lt;div class="text-center pt-4 pb-2"&gt;
+                    &lt;p class="font-medium text-gray-800 text-lg"&gt;ご協力お願いいたします🙇‍♂️&lt;/p&gt;
+                &lt;/div&gt;
+
+            &lt;/div&gt;
+            
+            &lt;!-- Bottom Accent --&gt;
+            &lt;div class="h-2 gradient-header"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;!-- Copyright / Additional Info --&gt;
+        &lt;p class="text-center text-xs text-gray-400"&gt;
+            OpenChat Guidelines
+        &lt;/p&gt;
+
+    &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            <div class="absolute inset-0 pointer-events-none rounded-b-lg shadow-[inset_0_-20px_20px_rgba(0,0,0,0.5)]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Benefits Procedure -->
+                    <div class="bg-white rounded-xl shadow-lg shadow-slate-200/50 border border-slate-200 overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+                        <div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+                            <div class="flex items-center gap-3 overflow-hidden">
+                                <div class="w-10 h-10 rounded-lg bg-pink-100 flex items-center justify-center text-pink-600 flex-shrink-0">
+                                    <i data-lucide="gift" class="w-5 h-5"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <h3 class="font-bold text-slate-700 text-sm truncate">購入者特典の受取の手順</h3>
+                                    <p class="text-[10px] text-slate-400 font-mono truncate">HTML Template</p>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('prompt5', this)" class="group flex items-center gap-2 text-xs text-white bg-purple-600 hover:bg-purple-500 px-3 py-1.5 rounded-lg shadow-md shadow-purple-900/20 transition-all duration-300 active:scale-95 font-bold tracking-wide flex-shrink-0">
+                                <i data-lucide="copy" class="w-3 h-3 group-hover:scale-110 transition-transform"></i>
+                                <span class="copy-text">Copy</span>
+                            </button>
+                        </div>
+                        <div class="relative bg-slate-900 flex-1 min-h-[200px] max-h-[300px] flex flex-col group/code">
+                            <div class="absolute top-0 right-0 p-2 z-10 pointer-events-none">
+                                <span class="text-[10px] text-slate-500 bg-slate-800/80 px-2 py-1 rounded backdrop-blur-sm">Preview</span>
+                            </div>
+                            <pre class="flex-1 p-4 overflow-auto code-scroll text-[10px] font-mono text-slate-400 leading-relaxed"><code id="prompt5">&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;購入者特典の受取の手順&lt;/title&gt;
+    &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;
+    &lt;link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet"&gt;
+    &lt;style&gt;
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #fffafb; /* ほんのりピンクがかった白 */
+            color: #554b4b; /* 真っ黒ではなく温かみのあるダークグレー */
+            background-image: radial-gradient(#ffe4e6 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .gradient-header {
+            /* 女性らしいピンク〜コーラルオレンジのグラデーション */
+            background: linear-gradient(135deg, #f472b6 0%, #fb923c 100%);
+        }
+        .step-circle {
+            width: 36px;
+            height: 36px;
+            background-color: #fa8ea6; /* ローズピンクから薄ピンクへ変更 */
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 2px 4px rgba(250, 142, 166, 0.3);
+        }
+        .link-card {
+            border: 1px solid #fecdd3;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(255, 182, 193, 0.4);
+            border-color: #fa8ea6;
+        }
+        .link-card {
+            border: 1px solid #fecdd3;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(255, 182, 193, 0.4);
+            border-color: #fb7185;
+        }
+        .soft-shadow {
+            box-shadow: 0 4px 20px rgba(236, 72, 153, 0.08);
+        }
+        /* マーカー風の下線 */
+        .marker-highlight {
+            background: linear-gradient(transparent 60%, #fef08a 60%);
+            display: inline;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class="antialiased pb-12"&gt;
+
+    &lt;!-- Header Area --&gt;
+    &lt;header class="gradient-header text-white py-10 px-4 shadow-lg mb-8 rounded-b-[40px]"&gt;
+        &lt;div class="max-w-2xl mx-auto text-center"&gt;
+            &lt;h1 class="text-2xl md:text-3xl font-bold mb-3 tracking-wide drop-shadow-sm"&gt;購入者特典の受取の手順&lt;/h1&gt;
+            &lt;p class="text-white/90 text-sm font-medium"&gt;以下の手順に沿って特典をお受け取りください&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;!-- Main Content Container --&gt;
+    &lt;main class="max-w-2xl mx-auto px-4 space-y-8"&gt;
+
+        &lt;!-- Intro Section --&gt;
+        &lt;div class="bg-white/90 backdrop-blur-sm rounded-3xl soft-shadow p-8 border border-pink-100"&gt;
+            &lt;div class="space-y-5 leading-relaxed text-gray-700"&gt;
+                &lt;p class="font-bold text-[#fa8ea6] text-lg text-center border-b-2 border-pink-100 pb-4"&gt;別途、有料販売予定だった内容のため、&lt;br&gt;【一定の条件をクリアした方のみ】&lt;br&gt;とさせていただきます。&lt;/p&gt;                
+                なので、レビューを書いてくださった方は、&lt;br&gt;
+                &lt;span class="marker-highlight font-bold px-1"&gt;未来のテンプレもついてくると思ってください✨&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;※特典は整い次第、随時配布いたします。&lt;br&gt;
+                &lt;p&gt;とは言っても…&lt;br&gt;
+                ハードルの高いものではないです！&lt;br&gt;
+                簡単で、&lt;span class="font-bold text-[#fa8ea6]"&gt;数分&lt;/span&gt;もあれば終わります🥺&lt;/p&gt;
+
+                &lt;p&gt;ぜひ本Brainの感想を レビュー投稿お願いいたします。&lt;br&gt;
+                少しでも「参考になった」と 感じていただけましたら&lt;br&gt;
+                &lt;span class="text-yellow-500 font-bold text-lg"&gt;★5の評価&lt;/span&gt;をいただけると 今後の励みになります🥺&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Conditions Section --&gt;
+        &lt;div class="bg-white rounded-3xl soft-shadow p-8 border-2 border-pink-100 relative overflow-hidden"&gt;
+            &lt;!-- Decorative circle --&gt;
+            &lt;div class="absolute -top-10 -right-10 w-32 h-32 bg-pink-50 rounded-full opacity-50 z-0"&gt;&lt;/div&gt;
+            
+            &lt;div class="relative z-10"&gt;
+                &lt;!-- 修正箇所: 長い帯のデザインに変更・色を薄ピンクに変更・絵文字削除 --&gt;
+                &lt;h2 class="text-xl font-bold text-center mb-8 bg-[#fa8ea6] text-white py-3 rounded-lg shadow-md w-full"&gt;
+                    【特典受取条件】
+                &lt;/h2&gt;
+                
+                &lt;div class="space-y-8"&gt;
+                    &lt;!-- Condition 1 --&gt;
+                    &lt;div&gt;
+                        &lt;h3 class="font-bold text-lg mb-3 flex items-center text-gray-800"&gt;
+                            &lt;span class="step-circle mr-3"&gt;1&lt;/span&gt;
+                            Brainの「レビューを書く」
+                        &lt;/h3&gt;
+                        &lt;div class="ml-4 bg-pink-50 p-5 rounded-2xl border border-pink-100"&gt;
+                            &lt;ul class="list-disc list-inside space-y-2 text-gray-700"&gt;
+                                &lt;li&gt;レビューを投稿（100文字以上）&lt;/li&gt;
+                                &lt;li class="text-sm text-[#fa8ea6] list-none font-medium bg-white/60 p-2 rounded"&gt;※1~2文など薄いレビューは対象外。&lt;/li&gt;
+                                &lt;li class="text-sm text-[#fa8ea6] list-none mt-1 bg-white/60 p-2 rounded"&gt;※評価が著しく低い場合は、コンテンツ内容にご満足いただけていないと判断し、特典の付与はお断りさせていただきます。そもそも、ご満足いただけない状態で特典を受け取る必要もないかと思いますので、あらかじめご了承ください。&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Condition 2 --&gt;
+                    &lt;div&gt;
+                        &lt;h3 class="font-bold text-lg mb-3 flex items-center text-gray-800"&gt;
+                            &lt;span class="step-circle mr-3"&gt;2&lt;/span&gt;
+                            僕の固定ポストを引用で「レビュー」投稿
+                        &lt;/h3&gt;
+                        &lt;p class="ml-12 text-gray-500 text-sm"&gt;※BRAINと同様の文章でも可🥺&lt;/p&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Condition 3 --&gt;
+                    &lt;div&gt;
+                        &lt;h3 class="font-bold text-lg mb-3 flex items-center text-gray-800"&gt;
+                            &lt;span class="step-circle mr-3"&gt;3&lt;/span&gt;
+                            公式LINEにて、以下3点を送る。
+                        &lt;/h3&gt;
+                        &lt;div class="ml-4 bg-rose-50 p-5 rounded-2xl border border-rose-100"&gt;
+                            &lt;ul class="list-disc list-inside space-y-2 text-gray-700"&gt;
+                                &lt;li&gt;①、②のレビュー投稿がわかるスクショ&lt;/li&gt;
+                                &lt;li&gt;『特典を希望します！』と送信&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Detailed Steps Section --&gt;
+        &lt;div class="bg-white rounded-3xl soft-shadow p-8 border border-pink-100"&gt;
+            &lt;h2 class="text-xl font-bold mb-8 text-center text-gray-700"&gt;
+                &lt;span class="border-b-4 border-pink-200 pb-1"&gt;手順の詳細&lt;/span&gt;
+            &lt;/h2&gt;
+
+            &lt;!-- Step 1 --&gt;
+            &lt;div class="mb-10"&gt;
+                &lt;h3 class="font-bold text-lg text-[#fa8ea6] mb-4 flex items-center"&gt;
+                    &lt;i class="fas fa-check-circle mr-2 text-pink-300"&gt;&lt;/i&gt;
+                    ①まず、『Brain』にアクセス
+                &lt;/h3&gt;
+                
+                &lt;!-- Brain Link Card Mockup --&gt;
+                &lt;a href="https://brain-market.com" target="_blank" class="block link-card no-underline text-gray-800 group"&gt;
+                    &lt;div class="p-5 flex items-center"&gt;
+                        &lt;div class="flex-shrink-0 mr-5 w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-400 text-2xl group-hover:bg-blue-100 transition"&gt;
+                            &lt;i class="fas fa-brain"&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                        &lt;div&gt;
+                            &lt;div class="font-bold text-gray-800 group-hover:text-[#fa8ea6] transition"&gt;Brain | 紹介機能付きコンテンツ販売プラットフォーム ブレイン&lt;/div&gt;
+                            &lt;div class="text-xs text-gray-500 mt-2 leading-relaxed"&gt;Brain(ブレイン)は、自分が持っている知識やノウハウを有料販売し、収益化することができるプラットフォームです。レビュー&lt;/div&gt;
+                            &lt;div class="text-xs text-blue-400 mt-1 font-medium"&gt;brain-market.com&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Step 2 & 3 --&gt;
+            &lt;div class="mb-10 space-y-6"&gt;
+                &lt;div&gt;
+                    &lt;h3 class="font-bold text-lg text-[#fa8ea6] flex items-center"&gt;
+                        &lt;i class="fas fa-check-circle mr-2 text-pink-300"&gt;&lt;/i&gt;
+                        ②『レビューを書く』のボタンをクリック
+                    &lt;/h3&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h3 class="font-bold text-lg text-[#fa8ea6] flex items-center"&gt;
+                        &lt;i class="fas fa-check-circle mr-2 text-pink-300"&gt;&lt;/i&gt;
+                        ③総合評価 ＞ レビュータイトル ＞ レビュー記入 ＞ 確認するをタップ
+                    &lt;/h3&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Review Template --&gt;
+            &lt;div class="bg-blue-50/50 p-6 rounded-3xl border border-blue-100 mb-10 shadow-sm"&gt;
+                &lt;p class="font-bold mb-4 text-blue-800 flex items-center justify-center"&gt;
+                    &lt;span class="bg-white px-4 py-1 rounded-full shadow-sm text-sm"&gt;※感想の内容で迷ったら下記構成を参考に👇️&lt;/span&gt;
+                &lt;/p&gt;
+                &lt;div class="space-y-5 text-sm text-gray-700"&gt;
+                    &lt;div&gt;
+                        &lt;span class="font-bold text-blue-900 bg-blue-100 px-2 py-1 rounded"&gt;①Brainを買う前の収益・悩みはなんだったか&lt;/span&gt;&lt;br&gt;
+                        &lt;span class="text-gray-500 pl-2 block mt-2 ml-2 border-l-2 border-blue-200"&gt;例：プログラミングスキル0だった／AI使いこなせずに諦めてた&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;span class="font-bold text-blue-900 bg-blue-100 px-2 py-1 rounded"&gt;②Brainを買った後、どんな良い変化があったか&lt;/span&gt;&lt;br&gt;
+                        &lt;span class="text-gray-500 pl-2 block mt-1"&gt;例）&lt;/span&gt;
+                        &lt;ul class="list-disc pl-6 text-gray-500 space-y-1 mt-1 ml-2 border-l-2 border-blue-200"&gt;
+                            &lt;li&gt;１度作ればサイトが量産できるようになった&lt;/li&gt;
+                            &lt;li&gt;おしゃれなサイトがバンバン作れてAIの偉大さに気づきました&lt;/li&gt;
+                            &lt;li&gt;どんどんAI活用したくなりました。&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;&lt;span class="font-bold text-blue-900 bg-blue-100 px-2 py-1 rounded"&gt;③一番便利だと思ったことは何か&lt;/span&gt;&lt;/div&gt;
+                    &lt;div&gt;&lt;span class="font-bold text-blue-900 bg-blue-100 px-2 py-1 rounded"&gt;④使ってみててワクワクしたことはあるか&lt;/span&gt;&lt;/div&gt;
+                    &lt;div&gt;&lt;span class="font-bold text-blue-900 bg-blue-100 px-2 py-1 rounded"&gt;⑤初めて知ったことはあるか&lt;/span&gt;&lt;/div&gt;
+                    &lt;div&gt;&lt;span class="font-bold text-blue-900 bg-blue-100 px-2 py-1 rounded"&gt;⑥自分のビジネスに、どう活かせそうか&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Step 4 (Threads) --&gt;
+            &lt;div class="mb-10"&gt;
+                &lt;h3 class="font-bold text-lg text-[#fa8ea6] mb-3 flex items-center"&gt;
+                    &lt;i class="fas fa-check-circle mr-2 text-pink-300"&gt;&lt;/i&gt;
+                    ④投稿できたら、
+                &lt;/h3&gt;
+                &lt;p class="mb-3 text-gray-600 pl-7"&gt;僕の固定ポストを引用して「レビュー」投稿&lt;/p&gt;
+                &lt;a href="https://www.threads.com/@kenshiro_ai.fukugyo" target="_blank" class="block w-full transform hover:scale-[1.02] transition duration-200"&gt;
+                    &lt;div class="bg-black text-white font-bold py-4 px-6 rounded-2xl flex items-center justify-center shadow-lg hover:shadow-xl"&gt;
+                        &lt;i class="fab fa-threads mr-3 text-2xl"&gt;&lt;/i&gt;&nbsp;
+                        &lt;span class="truncate"&gt;Threads：ケンシロウ&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Step 4 (LINE Submission) - Text repeats number 4 as per instruction --&gt;
+            &lt;div class="mb-8"&gt;
+                &lt;h3 class="font-bold text-lg text-[#fa8ea6] mb-4 flex items-center"&gt;
+                    &lt;i class="fas fa-check-circle mr-2 text-pink-300"&gt;&lt;/i&gt;
+                    ④投稿できたら、スクショを撮り、
+                &lt;/h3&gt;
+                &lt;div class="bg-green-50 p-6 rounded-3xl border border-green-100 shadow-inner"&gt;
+                    &lt;p class="font-bold mb-3 text-green-800 text-center"&gt;公式LINEに以下3点をおくる&lt;/p&gt;
+                    &lt;div class="bg-white/80 p-4 rounded-xl mb-4 text-green-900 text-sm"&gt;
+                        &lt;ul class="list-disc list-inside space-y-2"&gt;
+                            &lt;li&gt;①、②のレビュー投稿がわかるスクショ&lt;/li&gt;
+                            &lt;li&gt;『特典を希望します！』と送信&lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;p class="text-xs text-gray-500 mt-2 ml-4"&gt;※BRAINと同様の文章でも可能🥺&lt;/p&gt;
+                    &lt;/div&gt;
+                    
+                    &lt;div class="text-center font-bold text-green-600 mb-3"&gt;▼購入者LINE&lt;/div&gt;
+                    
+                    &lt;!-- LINE Link Card Mockup - 修正箇所: リンクと表示名変更 --&gt;
+                    &lt;a href="https://lin.ee/kl9fCID" target="_blank" class="block bg-[#06c755] text-white rounded-2xl p-4 text-center font-bold hover:bg-[#05b34c] transition shadow-lg hover:shadow-xl transform hover:-translate-y-1"&gt;
+                        &lt;i class="fab fa-line mr-2 text-2xl align-middle"&gt;&lt;/i&gt; &lt;span class="align-middle"&gt;公式LINE&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Step 5 --&gt;
+            &lt;div class="text-center bg-gray-50 p-4 rounded-xl"&gt;
+                &lt;h3 class="font-bold text-lg text-[#fa8ea6] mb-1"&gt;⑤確認でき次第、特典準備完了後に随時お渡し&lt;/h3&gt;
+                &lt;p class="text-gray-500 text-sm"&gt;※気長にお待ち下さいませ。&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Footer / Warning Area --&gt;
+        &lt;div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-sm border border-red-100 p-8"&gt;
+            &lt;!-- 修正箇所: 絵文字とアイコンを削除 --&gt;
+            &lt;h3 class="text-[#fa8ea6] font-bold text-center text-lg mb-4"&gt;
+                注意点
+            &lt;/h3&gt;
+            &lt;div class="space-y-2 text-sm text-gray-600 text-center"&gt;
+                &lt;p&gt;購入者特典は予告なく終了する場合があります。&lt;/p&gt;
+                &lt;p&gt;あらかじめご了承くださいませ。&lt;/p&gt;
+                &lt;div class="mt-6 pt-6 border-t border-pink-100"&gt;
+                    &lt;p class="font-bold text-gray-700"&gt;公式LINEではなく、&lt;/p&gt;
+                    &lt;p class="font-bold text-[#fa8ea6] text-base mt-1"&gt;必ず上記の「【購入者限定】爆速プロ級サイト構築LINE」へとお送りください。&lt;/p&gt;
+                    &lt;p class="mt-3 text-xs text-gray-400"&gt;頂いた感想はSNS等に掲載させていただく場合がございます。&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+    &lt;/main&gt;
+
+    &lt;footer class="text-center text-gray-400 text-xs py-10"&gt;
+        &copy; Copyright
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            <div class="absolute inset-0 pointer-events-none rounded-b-lg shadow-[inset_0_-20px_20px_rgba(0,0,0,0.5)]"></div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -946,40 +1592,42 @@
         // Copy to clipboard function
         async function copyToClipboard(elementId, button) {
             const codeElement = document.getElementById(elementId);
+            if (!codeElement) {
+                console.error('Element not found:', elementId);
+                return;
+            }
             const textToCopy = codeElement.innerText;
-            const originalText = button.querySelector('.copy-text').textContent;
-            const icon = button.querySelector('svg');
+            const originalText = button.querySelector('.copy-text').innerText; // Use innerText to be safe
 
             try {
                 await navigator.clipboard.writeText(textToCopy);
                 
                 // Visual feedback
-                button.querySelector('.copy-text').textContent = 'Copied!';
-                button.classList.add('bg-green-600', 'text-white', 'border-green-600');
+                button.querySelector('.copy-text').innerText = 'Copied!';
                 
-                // Remove original classes
-                if(elementId === 'prompt2') {
-                     button.classList.remove('bg-purple-600', 'hover:bg-purple-500', 'shadow-purple-900/30');
-                } else {
+                // Change button style temporarily
+                const originalClasses = button.className;
+                
+                // Simple feedback style
+                button.classList.add('bg-green-600', 'border-green-600', 'text-white');
+                // Remove specific color classes to ensure green shows up if needed
+                
+                if (button.classList.contains('bg-purple-600')) {
+                     button.classList.remove('bg-purple-600', 'hover:bg-purple-500');
+                } else if (button.classList.contains('bg-slate-700')) {
                      button.classList.remove('bg-slate-700', 'hover:bg-blue-600');
                 }
-                
-                // Restore after 2 seconds
+
                 setTimeout(() => {
-                    button.querySelector('.copy-text').textContent = originalText;
-                    button.classList.remove('bg-green-600', 'text-white', 'border-green-600');
+                    button.querySelector('.copy-text').innerText = originalText;
                     
-                    // Special styling restoration
-                    if(elementId === 'prompt2') {
-                        button.className = "group flex items-center gap-2 text-xs text-white bg-purple-600 hover:bg-purple-500 px-5 py-2 rounded-lg shadow-lg shadow-purple-900/20 transition-all duration-300 transform active:scale-95 font-bold tracking-wide";
-                    } else {
-                        button.className = "group flex items-center gap-2 text-xs text-white bg-slate-700 hover:bg-blue-600 px-4 py-1.5 rounded-lg border border-slate-600 hover:border-blue-500 transition-all duration-300";
-                    }
+                    // Restore classes
+                    button.className = originalClasses;
                 }, 2000);
 
             } catch (err) {
                 console.error('Failed to copy text: ', err);
-                button.querySelector('.copy-text').textContent = 'Error';
+                button.querySelector('.copy-text').innerText = 'Error';
             }
         }
     </script>
