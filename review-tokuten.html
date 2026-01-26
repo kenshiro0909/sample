@@ -19,7 +19,7 @@
                     },
                     colors: {
                         brand: {
-                            bg: '#fbfaf6',     /* 淡いベージュ背景 */
+                            bg: '#fbfaf6',      /* 淡いベージュ背景 */
                             text: '#4a4a4a',   /* 濃いグレーテキスト */
                             accent: '#c4a661', /* ゴールドアクセント */
                         }
@@ -97,8 +97,8 @@
         <!-- タイトルデザイン変更 -->
         <div class="mb-10 relative py-4">
             <h1 class="font-serif leading-tight relative z-10">
-                <span class="block text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-800 tracking-tight mb-4 animate-title-reveal">
-                    Gemini <span class="text-slate-400 font-light mx-2 text-4xl align-middle">×</span> Github
+                <span class="block text-4xl sm:text-6xl lg:text-7xl font-bold text-slate-800 tracking-tight mb-4 animate-title-reveal">
+                    Gemini <span class="text-slate-400 font-light mx-2 text-3xl sm:text-4xl align-middle">×</span> Github
                 </span>
                 <span class="inline-block relative overflow-hidden animate-[fadeInUp_1s_ease-out_0.5s_forwards] opacity-0">
                     <span class="title-line relative z-10 text-xl sm:text-2xl text-slate-600 tracking-[0.2em] uppercase font-medium">
@@ -114,10 +114,6 @@
         </div>
 
         <div class="space-y-4 animate-fade-in-up" style="animation-delay: 0.5s;">
-            <p class="text-slate-600 text-lg leading-relaxed font-medium tracking-wide">
-                『BRAINレビュー＆Threads引用』<br>
-                ありがとうございました🔥
-            </p>
             <p class="text-slate-500 text-sm">
                 下記がレビュー特典になります！<br>ぜひ、ご活用くださいませ✨️
             </p>
@@ -183,7 +179,7 @@
                         <div class="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 transition-colors">
                             <i data-lucide="at-sign" class="w-5 h-5 text-white"></i>
                         </div>
-                        <span class="text-base font-bold tracking-wide">サイトができたらThreadsでメンションしてくれると喜びます✨️</span>
+                        <span class="text-base font-bold tracking-wide">引用いただけると、拡散致します✨️</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300"></i>
                     </a>
                 </div>
@@ -265,7 +261,7 @@
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Daiki Portfolio&lt;/title&gt;
+    &lt;title&gt;Kenshiro Portfolio&lt;/title&gt;
     &lt;!-- Tailwind CSS --&gt;
     &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;
     &lt;!-- React & ReactDOM --&gt;
@@ -279,6 +275,9 @@
     &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
     &lt;link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600;700&family=Jost:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Great+Vibes&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet"&gt;
     
+    &lt;!-- Lucide Icons --&gt;
+    &lt;script src="https://unpkg.com/lucide@latest"&gt;&lt;/script&gt;
+
     &lt;script&gt;
         tailwind.config = {
             darkMode: 'class',
@@ -309,8 +308,8 @@
                         'spin-slow': 'spin 12s linear infinite',
                         'shimmer': 'shimmer 2s linear infinite',
                         'fade-in-slow': 'fadeIn 2s ease-out forwards',
-                        'pan-mobile': 'pan 3s ease-in-out infinite alternate',   // Fastest for Mobile
-                        'pan-desktop': 'pan 15s ease-in-out infinite alternate', // 15s for PC
+                        'pan-mobile': 'pan 3s ease-in-out infinite alternate',
+                        'pan-desktop': 'pan 15s ease-in-out infinite alternate',
                     },
                     keyframes: {
                         shimmer: {
@@ -340,7 +339,7 @@
             -webkit-font-smoothing: antialiased;
             letter-spacing: 0.05em;
             overflow-x: hidden;
-            cursor: none;
+            cursor: none; /* Custom cursor */
         }
 
         /* Custom Cursor */
@@ -404,16 +403,17 @@
             clip-path: inset(0 0 0 0);
         }
 
-        /* Auto Reveal Animation - Load Based (For Hero) */
+        /* Auto Reveal Animation */
         .reveal-auto {
             animation: revealAutoAnim 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s forwards;
-            clip-path: inset(0 0 100% 0); /* Start hidden */
+            clip-path: inset(0 0 100% 0);
         }
         @keyframes revealAutoAnim {
             0% { clip-path: inset(0 0 100% 0); }
             100% { clip-path: inset(0 0 0 0); }
         }
 
+        /* Animation Variations */
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
@@ -422,6 +422,36 @@
         .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .fade-right {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .fade-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-left {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .fade-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .zoom-in.visible {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .fade-in {
@@ -482,18 +512,15 @@
             transform: translateY(-100%);
         }
 
-        .snap-x-mandatory {
-            scroll-snap-type: x mandatory;
-        }
-        .snap-center {
-            scroll-snap-align: center;
-        }
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .text-glow {
@@ -533,7 +560,6 @@
             &lt;/svg&gt;
         );
         const ArrowRight = (props) =&gt; &lt;Icon {...props}&gt;&lt;path d="M5 12h14"/&gt;&lt;path d="m12 5 7 7-7 7"/&gt;&lt;/Icon&gt;;
-        const ThreadsIcon = (props) =&gt; &lt;Icon {...props}&gt;&lt;path d="M12.754 13.93c1.776 0 2.21-1.353 2.164-2.833-.042-1.343-.455-2.072-1.334-2.228-.908-.16-1.57.517-1.57 1.48 0 .825.59 1.502 1.503 1.502.835 0 1.517-.614 1.517-1.482 0-1.72-1.258-3.085-3.033-3.085-1.9960-3.61 1.536-3.61 3.515 0 1.944 1.535 3.543 3.568 3.543 1.156 0 2.152-.47 2.766-1.25.105.474.343 1.34.42 1.696.53 2.458-1.467 4.195-4.14 4.195-2.738 0-4.63-2.148-4.63-5.013 0-2.887 2.05-5.185 4.92-5.185 2.155 0 3.708 1.196 4.417 2.37.116-.273.28-.62.433-1.025C15.08 7.372 12.793 6 10.05 6 5.61 6 2 9.688 2 14.238c0 4.502 3.655 8.127 8.163 8.127 3.328 0 5.86-1.895 6.666-4.99l.06-.232H14.5c-.53 1.32-2.074 2.39-3.71 2.39-2.316 0-4.175-1.87-4.175-4.223 0-2.313 1.832-4.186 4.14-4.186 1.433 0 2.287.89 2.287 1.884 0 .736-.554 1.144-1.095 1.144-.814 0-1.205-.623-1.205-1.22 0-.306.07-.63.2-.84.236.425.47.887.666 1.31.05.105.093.208.134.31z"/&gt;&lt;/Icon&gt;;
         
         /* --- Custom Cursor --- */
         const CustomCursor = () =&gt; {
@@ -556,18 +582,33 @@
                 };
                 const handleHoverStart = () =&gt; document.body.classList.add('hovering');
                 const handleHoverEnd = () =&gt; document.body.classList.remove('hovering');
+                
                 window.addEventListener('mousemove', moveCursor);
-                const hoverables = document.querySelectorAll('a, button, .hover-target');
-                hoverables.forEach(el =&gt; {
-                    el.addEventListener('mouseenter', handleHoverStart);
-                    el.addEventListener('mouseleave', handleHoverEnd);
-                });
+                
+                // Add event listeners to dynamically added elements by delegating or polling
+                // For React, we just attach to existing valid targets.
+                const attachListeners = () =&gt; {
+                   const hoverables = document.querySelectorAll('a, button, .hover-target');
+                   hoverables.forEach(el =&gt; {
+                       el.addEventListener('mouseenter', handleHoverStart);
+                       el.addEventListener('mouseleave', handleHoverEnd);
+                   });
+                };
+                
+                attachListeners();
+                
+                // Re-attach on DOM updates (simple fallback)
+                const observer = new MutationObserver(attachListeners);
+                observer.observe(document.body, { childList: true, subtree: true });
+
                 return () =&gt; {
                     window.removeEventListener('mousemove', moveCursor);
+                    const hoverables = document.querySelectorAll('a, button, .hover-target');
                     hoverables.forEach(el =&gt; {
                         el.removeEventListener('mouseenter', handleHoverStart);
                         el.removeEventListener('mouseleave', handleHoverEnd);
                     });
+                    observer.disconnect();
                 };
             }, []);
             return (
@@ -597,36 +638,47 @@
             &lt;/div&gt;
         );
 
-        const ContentCard = ({ number, title, desc, image, link, note, aspectRatio = "aspect-video" }) =&gt; (
-            &lt;a href={link} target="_blank" className="group block relative fade-in w-full"&gt;
-                &lt;div className={`img-mask-container ${aspectRatio} mb-6 w-full flex items-center justify-center bg-[#1a1a1a]`}&gt;
-                    &lt;div className="img-mask-overlay"&gt;&lt;/div&gt;
-                    &lt;img src={image} alt={title} className="img-mask-img object-cover" /&gt;
-                    {note && (
-                        &lt;div className="absolute top-0 right-0 bg-brand-gold text-brand-black text-[10px] font-bold px-3 py-1.5 z-10 opacity-0 group-hover:opacity-100 transition-opacity"&gt;
-                            {note}
+        const ContentCard = ({ number, title, desc, image, link, note, aspectRatio = "aspect-video", animationClass = "zoom-in" }) =&gt; {
+            const handleImageError = (e) =&gt; {
+                e.target.src = "https://placehold.co/600x400/1a1a1a/c4a661?text=No+Image";
+            };
+
+            return (
+                &lt;a href={link} target="_blank" className={`group block relative w-full ${animationClass}`}&gt;
+                    &lt;div className={`img-mask-container ${aspectRatio} mb-6 w-full flex items-center justify-center bg-[#1a1a1a]`}&gt;
+                        &lt;div className="img-mask-overlay"&gt;&lt;/div&gt;
+                        &lt;img 
+                            src={image} 
+                            onError={handleImageError}
+                            alt={title} 
+                            className="img-mask-img" 
+                        /&gt;
+                        {note && (
+                            &lt;div className="absolute top-0 right-0 bg-brand-gold text-brand-black text-[10px] font-bold px-3 py-1.5 z-10 opacity-0 group-hover:opacity-100 transition-opacity"&gt;
+                                {note}
+                            &lt;/div&gt;
+                        )}
+                    &lt;/div&gt;
+                    &lt;div className="flex items-start gap-4"&gt;
+                        &lt;span className="text-xs font-en font-bold text-brand-gold mt-1"&gt;{number}&lt;/span&gt;
+                        &lt;div className="space-y-2 flex-1"&gt;
+                            &lt;h3 className="text-lg md:text-xl font-serif font-medium group-hover:text-brand-gold transition-colors duration-300"&gt;
+                                {title}
+                            &lt;/h3&gt;
+                            &lt;p className="text-sm text-gray-400 font-sans leading-relaxed border-l border-brand-gold/20 pl-3"&gt;
+                                {desc}
+                            &lt;/p&gt;
                         &lt;/div&gt;
-                    )}
-                &lt;/div&gt;
-                &lt;div className="flex items-start gap-4"&gt;
-                    &lt;span className="text-xs font-en font-bold text-brand-gold mt-1"&gt;{number}&lt;/span&gt;
-                    &lt;div className="space-y-2 flex-1"&gt;
-                        &lt;h3 className="text-lg md:text-xl font-serif font-medium group-hover:text-brand-gold transition-colors duration-300"&gt;
-                            {title}
-                        &lt;/h3&gt;
-                        &lt;p className="text-sm text-gray-400 font-sans leading-relaxed border-l border-brand-gold/20 pl-3"&gt;
-                            {desc}
-                        &lt;/p&gt;
+                        &lt;div className="opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300"&gt;
+                            &lt;ArrowRight className="text-brand-gold" /&gt;
+                        &lt;/div&gt;
                     &lt;/div&gt;
-                    &lt;div className="opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300"&gt;
-                        &lt;ArrowRight className="text-brand-gold" /&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/a&gt;
-        );
+                &lt;/a&gt;
+            );
+        };
 
         const TimelineItem = ({ year, title, desc, current }) =&gt; (
-            &lt;div className={`relative pl-8 md:pl-0 md:grid md:grid-cols-12 gap-8 py-8 border-l md:border-l-0 border-brand-gold/20 fade-up ${current ? 'opacity-100' : 'opacity-80'}`}&gt;
+            &lt;div className={`relative pl-8 md:pl-0 md:grid md:grid-cols-12 gap-8 py-8 border-l md:border-l-0 border-brand-gold/20 fade-right ${current ? 'opacity-100' : 'opacity-80'}`}&gt;
                 &lt;div className={`absolute left-[-5px] top-10 w-2.5 h-2.5 rounded-full z-10 md:hidden ${current ? 'bg-brand-gold' : 'bg-gray-700'}`}&gt;&lt;/div&gt;
                 &lt;div className="md:col-span-3 md:text-right md:pr-12 md:border-r md:border-brand-gold/20 relative"&gt;
                     &lt;div className={`hidden md:block absolute right-[-5px] top-2 w-2.5 h-2.5 rounded-full z-10 ${current ? 'bg-brand-gold' : 'bg-gray-700'}`}&gt;&lt;/div&gt;
@@ -657,23 +709,36 @@
                     });
                 }, observerOptions);
 
-                const elements = document.querySelectorAll('.fade-up, .fade-in, .reveal-text, .img-mask-container');
+                const elements = document.querySelectorAll('.fade-up, .fade-in, .fade-right, .fade-left, .zoom-in, .reveal-text, .img-mask-container');
                 elements.forEach(el =&gt; observer.observe(el));
 
                 setTimeout(() =&gt; setLoading(false), 1500);
 
-                // Force dark mode
                 document.documentElement.classList.add('dark');
 
                 return () =&gt; observer.disconnect();
             }, [loading]);
 
             const navItems = [
-                { label: 'PROJECTS', href: '#contents' },
-                { label: 'SERVICES', href: '#recommend' },
-                { label: 'BLOG', href: '#' }, 
-                { label: 'PROFILE', href: '#about' },
+                { label: 'MY CONTENTS', href: '#contents' },
+                { label: 'Recommend', href: '#recommend' },
+                { label: 'NOTE', href: 'https://note.com/kenshiro0909' }, 
+                { label: 'Story', href: '#about' },
             ];
+            
+            // Image Fallbacks for Preview
+            const IMAGES = {
+                hero: "https://raw.githubusercontent.com/kenshiro0909/portfolio/main/assets/作業部屋.webp", // Updated
+                aithraise: "https://raw.githubusercontent.com/kenshiro0909/portfolio/main/assets/AITHERAISE.webp",
+                kenshipu: "https://raw.githubusercontent.com/kenshiro0909/portfolio/main/assets/kenshipu.webp",
+                noteraise: "https://raw.githubusercontent.com/kenshiro0909/portfolio/main/assets/noteraise.webp",
+                recommend: "https://raw.githubusercontent.com/kenshiro0909/portfolio/main/assets/シンスレッズ.webp", // Updated
+                profile: "https://raw.githubusercontent.com/kenshiro0909/portfolio/main/assets/kenshiroicon.webp"
+            };
+
+            const handleProfileError = (e) =&gt; {
+                e.target.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop"; // Fallback profile
+            };
 
             return (
                 &lt;div className="relative bg-[#121212] min-h-screen"&gt;
@@ -683,7 +748,7 @@
                     &lt;div className={`loader-overlay ${!loading ? 'hidden' : ''}`}&gt;
                         &lt;div className="text-center"&gt;
                             &lt;h1 className="text-6xl md:text-8xl font-elegant italic text-white tracking-widest opacity-0 animate-[fadeInUp_1s_forwards]"&gt;
-                                Daiki
+                                Kenshiro
                             &lt;/h1&gt;
                         &lt;/div&gt;
                     &lt;/div&gt;
@@ -692,7 +757,7 @@
                     &lt;nav className="fixed w-full z-40 top-0 left-0 mix-blend-difference text-white"&gt;
                         &lt;div className="max-w-[1440px] mx-auto px-6 h-24 flex justify-between items-center"&gt;
                             &lt;a href="#" className="text-3xl md:text-4xl font-elegant italic tracking-[0.05em] text-white hover-target font-bold"&gt;
-                                Daiki Portfolio
+                                Kenshiro Portfolio
                             &lt;/a&gt;
                             &lt;div className="flex items-center gap-8"&gt;
                                 &lt;div className="hidden md:flex gap-10 text-xs font-en font-medium tracking-[0.2em] uppercase"&gt;
@@ -710,30 +775,28 @@
                     {/* Hero Section */}
                     &lt;header className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"&gt;
                         &lt;div className="absolute inset-0 z-0"&gt;
-                            {/* Animated Background */}
                             &lt;div className="w-full h-full bg-cover bg-center animate-pan-mobile md:animate-pan-desktop" 
-                                 style={{backgroundImage: 'url("https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop")'}}&gt;
+                                 style={{backgroundImage: `url(${IMAGES.hero})`}}&gt;
                             &lt;/div&gt;
                             &lt;div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]"&gt;&lt;/div&gt;
                         &lt;/div&gt;
 
                         &lt;div className="relative z-10 w-full max-w-[1440px] px-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-center"&gt;
                             &lt;div className="md:col-span-12 lg:col-span-10 lg:col-start-2"&gt;
-                                {/* Auto-reveal text */}
                                 &lt;div className="reveal-auto text-center md:text-left"&gt;
                                     &lt;div className="mb-8 inline-block relative"&gt;
                                         &lt;div className="absolute inset-0 border-y border-white/20 bg-white/5 backdrop-blur-sm -skew-x-12"&gt;&lt;/div&gt;
                                         &lt;h1 className="relative z-10 text-3xl md:text-5xl lg:text-6xl font-luxury font-bold text-white leading-tight tracking-[0.15em] drop-shadow-2xl py-2 px-8"&gt;
-                                            WEB&lt;span className="text-brand-gold mx-3 font-serif font-light"&gt;×&lt;/span&gt;CREATIVE
+                                            THREADS&lt;span className="text-brand-gold mx-3 font-serif font-light"&gt;×&lt;/span&gt;AI
                                         &lt;/h1&gt;
                                     &lt;/div&gt;
                                     
                                     &lt;div className="mt-2 flex flex-row items-baseline justify-center md:justify-start gap-2 md:gap-4 pl-1 md:pl-2"&gt;
                                         &lt;span className="text-gradient-gold font-serif font-bold text-5xl sm:text-6xl md:text-8xl lg:text-9xl tracking-wider drop-shadow-xl whitespace-nowrap"&gt;
-                                            理想の未来
+                                            月10万
                                         &lt;/span&gt;
                                         &lt;span className="text-white/90 font-serif font-light text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-[0.2em] mb-0 md:mb-3 whitespace-nowrap"&gt;
-                                            をつくる
+                                            を叶える
                                         &lt;/span&gt;
                                     &lt;/div&gt;
                                 &lt;/div&gt;
@@ -741,20 +804,20 @@
                                     
                                     &lt;div className="mb-12"&gt;
                                         &lt;p className="text-white font-serif text-xl md:text-2xl lg:text-3xl leading-relaxed tracking-widest font-light text-shadow-sm whitespace-nowrap md:whitespace-normal"&gt;
-                                            あなたのビジネスに&lt;br/&gt;
+                                            貴方の人生に&lt;br/&gt;
                                             &lt;span className="relative inline-block mt-2"&gt;
-                                                「価値」という名の新しい柱を。
+                                                「安心」という名の新しい柱を。
                                                 &lt;span className="absolute -bottom-2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-80"&gt;&lt;/span&gt;
                                             &lt;/span&gt;
                                         &lt;/p&gt;
                                     &lt;/div&gt;
 
                                     &lt;div className="flex flex-wrap gap-6 justify-center md:justify-start"&gt;
-                                        &lt;a href="#" target="_blank" className="hover-target px-12 py-4 border border-brand-note text-white text-xs font-bold font-en uppercase tracking-[0.25em] hover:bg-brand-note hover:border-brand-note hover:text-white transition-all duration-300 shadow-lg bg-transparent"&gt;
-                                            BLOG
+                                        &lt;a href="https://note.com/kenshiro0909" target="_blank" className="hover-target px-12 py-4 border border-white text-white text-xs font-bold font-en uppercase tracking-[0.25em] hover:bg-brand-note hover:border-brand-note hover:text-white transition-all duration-300 shadow-lg bg-transparent"&gt;
+                                            NOTE
                                         &lt;/a&gt;
-                                        &lt;a href="#" target="_blank" className="hover-target px-12 py-4 border border-brand-line text-white text-xs font-bold font-en uppercase tracking-[0.25em] hover:bg-brand-line hover:border-brand-line hover:text-white transition-all duration-300 shadow-lg bg-transparent"&gt;
-                                            CONTACT
+                                        &lt;a href="https://lin.ee/Hmq3J35" target="_blank" className="hover-target px-12 py-4 border border-white text-white text-xs font-bold font-en uppercase tracking-[0.25em] hover:bg-brand-line hover:border-brand-line hover:text-white transition-all duration-300 shadow-lg bg-transparent"&gt;
+                                            オプチャ参加
                                         &lt;/a&gt;
                                     &lt;/div&gt;
                                 &lt;/div&gt;
@@ -769,36 +832,65 @@
                     {/* Contents Section */}
                     &lt;section id="contents" className="py-32 px-6 bg-[#121212] relative"&gt;
                         &lt;div className="max-w-[1200px] mx-auto"&gt;
-                            &lt;SectionHeading number="01" title="Projects" subtitle="～知識と経験を凝縮した、課題解決へのアプローチ～" /&gt;
+                            &lt;SectionHeading number="01" title="My Contents" subtitle="～僕の知識と経験を凝縮した、人生を変える武器たち～" /&gt;
+                            &lt;p className="text-[10px] text-gray-400 text-right -mt-10 mb-12 font-sans opacity-60 pr-2"&gt;
+                                ※信頼できるものに限りPRあり
+                            &lt;/p&gt;
 
-                            &lt;div className="flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-x-8 md:gap-y-16"&gt;
-                                &lt;ContentCard 
-                                    number="01"
-                                    title="Webデザイン完全攻略"
-                                    desc="【受講生実績：3ヶ月で案件獲得】現役デザイナー監修。基礎から応用まで、未経験からプロを目指すための完全ロードマップ。"
-                                    image="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop"
-                                    link="#"
-                                    note="DESIGN"
-                                    aspectRatio="aspect-video"
-                                /&gt;
-                                &lt;ContentCard 
-                                    number="02"
-                                    title="クリエイターズコミュニティ"
-                                    desc="孤独な作業を終わらせる、熱量の高い仲間との環境。技術共有とフィードバックで、楽しみながら成長速度を加速させる場所。"
-                                    image="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
-                                    link="#"
-                                    note="COMMUNITY"
-                                    aspectRatio="aspect-video"
-                                /&gt;
-                                &lt;ContentCard 
-                                    number="03"
-                                    title="SNSマーケティング講座"
-                                    desc="AI×心理学で『集客』を自動化する。フォロワー数に依存せず、あなたのファンを増やしビジネスを加速させます。"
-                                    image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop"
-                                    link="#" 
-                                    note="MARKETING"
-                                    aspectRatio="aspect-video"
-                                 /&gt;
+                            &lt;div className="flex flex-col gap-12"&gt;
+                                {/* Featured Content (Big) - Updated */}
+                                &lt;div className="w-full max-w-3xl mx-auto"&gt;
+                                    &lt;ContentCard 
+                                        number="NEW RELEASE"
+                                        title="【GitHub×Gemini】ド素人でも爆速プロ級サイト構築"
+                                        desc={
+                                            &lt;&gt;
+                                                🌟Gemini×GitHubで完全無料・プロ級サイトを量産&lt;br/&gt;
+                                                ◽知識ゼロでも初回20分、慣れれば数分で完成可能&lt;br/&gt;
+                                                &lt;span className="text-brand-gold font-bold"&gt;外注費0円。一生使えるスキルを今すぐ手に入れよう&lt;/span&gt;
+                                            &lt;/&gt;
+                                        }
+                                        image="https://raw.githubusercontent.com/kenshiro0909/portfolio/main/assets/gemhub.png"
+                                        link="https://brain-market.com/u/hokuto88/a/b5ATM2MjMgoTZsNWa0JXY"
+                                        note="NEW RELEASE"
+                                        aspectRatio="aspect-video"
+                                        animationClass="fade-up"
+                                    /&gt;
+                                &lt;/div&gt;
+
+                                {/* Existing Contents Grid */}
+                                &lt;div className="flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-x-8 md:gap-y-16"&gt;
+                                    &lt;ContentCard 
+                                        number="01"
+                                        title="Threads×note攻略『AITHRAISE』"
+                                        desc="【購入者様：4ヶ月で50万達成】大手エンジニアとの共作。開始14日で成果報告14名以上。30個以上のGPTsが完全並走サポート"
+                                        image={IMAGES.aithraise}
+                                        link="https://brain-market.com/u/hokuto88/a/byIjMyIjMgoTZsNWa0JXY"
+                                        note="AITHERAISE"
+                                        aspectRatio="aspect-video"
+                                        animationClass="fade-right"
+                                    /&gt;
+                                    &lt;ContentCard 
+                                        number="02"
+                                        title="ケンシプくらぶ"
+                                        desc="孤独な作業を終わらせる、熱量の高い仲間との環境。挫折させない仕組みと基準値を高め合う場所で、楽しみながら成果への最短ルートを走り抜ける。"
+                                        image={IMAGES.kenshipu}
+                                        link="https://note.com/kenshiro0909/n/n22e97c1439c6"
+                                        note="ケンシプ"
+                                        aspectRatio="aspect-video"
+                                        animationClass="fade-up"
+                                    /&gt;
+                                    &lt;ContentCard 
+                                        number="03"
+                                        title="NOTERAISE"
+                                        desc="AI×Canvaで『売れるサムネ』を自在に操る。クリック率を最大化し、あなたのnoteを収益化の柱へと導きます。"
+                                        image={IMAGES.noteraise}
+                                        link="https://brain-market.com/u/hokuto88/a/b2EzN1IjMgoTZsNWa0JXY" 
+                                        note="Noteraise"
+                                        aspectRatio="aspect-video"
+                                        animationClass="fade-left"
+                                     /&gt;
+                                &lt;/div&gt;
                             &lt;/div&gt;
                         &lt;/div&gt;
                     &lt;/section&gt;
@@ -806,29 +898,42 @@
                     {/* Recommended Section */}
                     &lt;section id="recommend" className="py-32 px-6 bg-[#1a1a1a]"&gt;
                         &lt;div className="max-w-[1200px] mx-auto"&gt;
-                             &lt;SectionHeading number="02" title="Services" subtitle="～提供可能なスキルとサービス～" /&gt;
+                             &lt;SectionHeading number="02" title="Recommend" subtitle="～おすすめの厳選教材～" /&gt;
                              
-                             &lt;div className="md:w-2/3 ml-auto"&gt;
-                                &lt;div className="grid grid-cols-1 md:grid-cols-2 gap-8"&gt;
-                                    &lt;div className="md:col-span-1"&gt;
+                             &lt;div className="md:w-full ml-auto"&gt;
+                                &lt;div className="grid grid-cols-1 md:grid-cols-3 gap-8"&gt;
+                                    &lt;div className="md:col-span-1 fade-right"&gt;
                                         &lt;h3 className="text-2xl font-serif mb-6 leading-relaxed"&gt;
-                                            &lt;span className="text-brand-gold font-bold"&gt;ビジネスを加速させるWeb制作。&lt;/span&gt;&lt;br/&gt;
-                                            ただ作るだけでなく、成果にコミット。
+                                            &lt;span className="text-brand-gold font-bold"&gt;AITHRAISEとの相性抜群。&lt;/span&gt;&lt;br/&gt;
+                                            迷いなく進むためのバイブル。
                                         &lt;/h3&gt;
                                         &lt;p className="text-sm opacity-60 font-sans leading-7 mb-8"&gt;
-                                            クライアント様の課題をヒアリングし、最適なソリューションを提案します。
-                                            デザインからコーディング、公開後の運用までトータルでサポートいたします。
+                                            僕が実際に使用し、成果を加速させたノウハウ。
+                                            Threadsでマネタイズしたい方には必須のアイテムです。
                                         &lt;/p&gt;
                                     &lt;/div&gt;
                                     &lt;div className="md:col-span-1"&gt;
                                         &lt;ContentCard 
-                                            number="SVC"
-                                            title="ホームページ制作一式"
-                                            desc="コーポレートサイト、LP、ポートフォリオなど。レスポンシブ対応、SEO対策も標準装備で、集客に強いサイトを構築します。"
-                                            image="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1974&auto=format&fit=crop"
-                                            link="#"
-                                            note="WEB DEV"
+                                            number="REC 01"
+                                            title="シンスレッズ"
+                                            desc="Threadsで成果を出している人で持っていない人はほぼゼロといっても過言ではない。講座級のノウハウが魅力！"
+                                            image={IMAGES.recommend}
+                                            link="https://kenshiro-sidejob.site/new-threads/"
+                                            note="シンスレッズ"
                                             aspectRatio="aspect-video"
+                                            animationClass="fade-left"
+                                        /&gt;
+                                    &lt;/div&gt;
+                                    &lt;div className="md:col-span-1"&gt;
+                                        &lt;ContentCard 
+                                            number="REC 02"
+                                            title="不可思議 -HUKASHIGI-"
+                                            desc="知識ゼロでも3ステップでプロ級のデザインへ。8万通り以上の図解を生成する最強ツール『NanobananaPro』。豪華特典付きで案内中。"
+                                            image="https://raw.githubusercontent.com/kenshiro0909/portfolio/main/assets/hukashigi.png"
+                                            link="https://brmk.io/X0Q8FD"
+                                            note="NEW ARRIVAL"
+                                            aspectRatio="aspect-video"
+                                            animationClass="fade-left"
                                         /&gt;
                                     &lt;/div&gt;
                                 &lt;/div&gt;
@@ -839,53 +944,142 @@
                     {/* Story Section */}
                     &lt;section id="about" className="py-32 px-6 bg-[#121212] overflow-hidden"&gt;
                         &lt;div className="max-w-[1200px] mx-auto"&gt;
-                            &lt;SectionHeading number="03" title="Story" subtitle="～元ブラック企業社員が独立して自由を手にするまでの物語～" /&gt;
+                            &lt;SectionHeading number="03" title="Story" subtitle="～年319日社畜の男がAIで効率化しながら結婚するまでの物語～" /&gt;
 
                             &lt;div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center"&gt;
-                                &lt;div className="lg:col-span-5 relative fade-up"&gt;
+                                &lt;div className="lg:col-span-5 relative fade-right"&gt;
+                                    {/* Image with Shadow for Depth */}
                                     &lt;div className="img-mask-container aspect-[9/16] w-full max-w-md mx-auto z-10 relative"&gt;
                                         &lt;div className="img-mask-overlay"&gt;&lt;/div&gt;
-                                        &lt;img src="https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?q=80&w=2070&auto=format&fit=crop" alt="profile" className="img-mask-img object-cover" /&gt;
+                                        &lt;img 
+                                            src={IMAGES.profile} 
+                                            onError={handleProfileError}
+                                            alt="kenshiro" 
+                                            className="img-mask-img object-contain" 
+                                        /&gt;
                                         
+                                        {/* Kenshiro Text */}
                                         &lt;div className="absolute bottom-4 right-2 z-20 pointer-events-none"&gt;
                                             &lt;h3 className="text-5xl md:text-7xl lg:text-8xl font-script text-brand-gold text-glow select-none drop-shadow-xl"&gt;
-                                                Daiki
+                                                Kenshiro
                                             &lt;/h3&gt;
                                         &lt;/div&gt;
                                     &lt;/div&gt;
                                 &lt;/div&gt;
-                                &lt;div className="lg:col-span-6 lg:col-start-7 space-y-10 fade-up"&gt;
+                                &lt;div className="lg:col-span-6 lg:col-start-7 space-y-10 fade-left"&gt;
                                     &lt;div className="space-y-6"&gt;
                                         &lt;h3 className="text-3xl font-serif leading-tight"&gt;
-                                            何度失敗しても、&lt;br/&gt;
-                                            &lt;span className="text-brand-gold italic"&gt;自分らしさ&lt;/span&gt;は捨てない。
+                                            泥臭くても、&lt;br/&gt;
+                                            &lt;span className="text-brand-gold italic"&gt;自分の人生&lt;/span&gt;を諦めない。
                                         &lt;/h3&gt;
                                         &lt;p className="font-sans text-sm leading-8 opacity-70"&gt;
-                                            はじめまして、WebクリエイターのDaikiです。&lt;br/&gt;
-                                            かつては営業職として、深夜まで続く残業とノルマに追われる日々でした。&lt;br/&gt;
-                                            「自分の人生はこのままでいいのか」&lt;br/&gt;
-                                            そんな不安を抱えながら、帰宅後のわずかな時間で独学を始めました。
+                                            はじめまして、ケンシロウです。&lt;br/&gt;
+                                            僕の人生は、順風満帆とは程遠いものでした。&lt;br/&gt;
+                                            店長として懸命に働いた職場からの理不尽な解雇。&lt;br/&gt;
+                                            失意の中、Uber Eatsでひたすらペダルを漕ぎ、日銭を稼ぐ日々。
                                         &lt;/p&gt;
                                         &lt;p className="font-sans text-sm leading-8 opacity-70"&gt;
-                                            最初はコードも全く理解できず、挫折の連続。&lt;br/&gt;
-                                            それでも&lt;strong className="text-brand-gold"&gt;「場所や時間に縛られずに働きたい」&lt;/strong&gt;という一心で継続しました。&lt;br/&gt;
-                                            現在はフリーランスとして独立し、かつての自分と同じように&lt;br/&gt;
-                                            現状を変えたいと願う人々の支援を行っています。
+                                            その後、ご縁がありカフェ店長となりますが、お店は失敗。&lt;br/&gt;
+                                            現在は&lt;strong className="text-brand-gold"&gt;週6勤務という過酷な労働環境&lt;/strong&gt;に身を置いています。&lt;br/&gt;
+                                            「おじいちゃんになってもこの働き方は続けられない」&lt;br/&gt;
+                                            その焦りと、最愛の彼女と結婚し幸せにするという夢のため、&lt;br/&gt;
+                                            泥臭く副業の世界へ飛び込みました。
                                         &lt;/p&gt;
                                     &lt;/div&gt;
                                     &lt;div className="flex flex-wrap gap-4 border-t border-brand-gold/20 pt-8"&gt;
-                                        &lt;a href="#" target="_blank" className="hover-target flex items-center justify-center px-8 py-4 bg-transparent border border-white text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-gold hover:border-brand-gold hover:text-black transition-all duration-300 shadow-lg"&gt;
-                                            X (Twitter)
+                                        &lt;a href="https://www.threads.net/@kenshiro_ai.fukugyo" target="_blank" className="hover-target flex items-center justify-center px-8 py-4 bg-transparent border border-white text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-gold hover:border-brand-gold hover:text-black transition-all duration-300 shadow-lg"&gt;
+                                            Threads
                                         &lt;/a&gt;
-                                        &lt;a href="#" target="_blank" className="hover-target flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-white text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-note hover:border-brand-note hover:text-white transition-all duration-300 shadow-lg"&gt;
-                                            Blog
+                                        &lt;a href="https://note.com/kenshiro0909" target="_blank" className="hover-target flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-white text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-note hover:border-brand-note hover:text-white transition-all duration-300 shadow-lg"&gt;
+                                            Note
                                         &lt;/a&gt;
-                                        &lt;a href="#" target="_blank" className="hover-target flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-white text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-line hover:border-brand-line hover:text-white transition-all duration-300 shadow-lg"&gt;
-                                            Instagram
+                                        &lt;a href="https://lin.ee/Hmq3J35" target="_blank" className="hover-target flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-white text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-line hover:border-brand-line hover:text-white transition-all duration-300 shadow-lg"&gt;
+                                            LINE
                                         &lt;/a&gt;
                                     &lt;/div&gt;
                                 &lt;/div&gt;
                             &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/section&gt;
+
+                    {/* Philosophy Section */}
+                    &lt;section id="values" className="py-32 px-6 bg-[#1a1a1a]"&gt;
+                        &lt;div className="max-w-[1200px] mx-auto"&gt;
+                            &lt;SectionHeading number="04" title="Values" subtitle="～大切にしている価値観～" /&gt;
+                            
+                            &lt;div className="grid grid-cols-1 md:grid-cols-3 gap-8"&gt;
+                                {[
+                                    {title: "Together", subtitle: "仲間との成長", desc: "一人勝ちはつまらない。仲間やフォロワーさんと一緒に成長し、全員で豊かになることを目指します。", delay: '0ms'},
+                                    {title: "Enjoy", subtitle: "楽しむ努力", desc: "「やらされる」のではなく「楽しむ」。短期の成果も大事ですが、長く続けるためのモチベーションを最優先に。", delay: '200ms'},
+                                    {title: "Long-term", subtitle: "長期目線", desc: "2〜3年後に会社員の給料を作る。焦らず、地に足をつけて、着実に未来の柱を築き上げます。", delay: '400ms'}
+                                ].map((item, i) =&gt; (
+                                    &lt;div key={i} className="p-8 border border-brand-gold/10 hover:border-brand-gold/40 transition-colors duration-500 zoom-in bg-white/5 backdrop-blur-sm" style={{transitionDelay: item.delay}}&gt;
+                                        &lt;h4 className="text-3xl font-en font-light mb-2 text-brand-gold"&gt;{item.title}&lt;/h4&gt;
+                                        &lt;h5 className="text-lg font-serif mb-4"&gt;{item.subtitle}&lt;/h5&gt;
+                                        &lt;p className="text-sm font-sans opacity-60 leading-relaxed text-justify"&gt;{item.desc}&lt;/p&gt;
+                                    &lt;/div&gt;
+                                ))}
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/section&gt;
+
+                    {/* Trajectory Section */}
+                    &lt;section id="trajectory" className="py-32 px-6 bg-[#121212]"&gt;
+                        &lt;div className="max-w-[1000px] mx-auto"&gt;
+                             &lt;SectionHeading number="05" title="Trajectory" subtitle="～軌跡～" /&gt;
+
+                             &lt;div className="space-y-0"&gt;
+                                &lt;TimelineItem 
+                                    year="01" 
+                                    title="過去の店長時代〜不当解雇" 
+                                    desc="かつて店長として奮闘するも、副社長の嘘とパワハラにより理不尽な解雇宣告。ストレスで腸炎を発症し、組織への絶望と共に職を失う。"
+                                /&gt;
+                                &lt;TimelineItem 
+                                    year="02" 
+                                    title="Uber Eatsでのサバイバル" 
+                                    desc="人間関係に疲れ果て、一人で黙々と働けるUber Eatsへ。1日127km走る日も。「これを一生続けられるか？」と自問自答する日々。"
+                                /&gt;
+                                &lt;TimelineItem 
+                                    year="03" 
+                                    title="カフェ店長 & 彼女との出会い" 
+                                    desc="ご縁がありカフェの店長へ。そこで今の彼女と出会い、「この人と結婚したい、脱サラして幸せにしたい」という強烈な動機が生まれる。"
+                                /&gt;
+                                &lt;TimelineItem 
+                                    year="04" 
+                                    title="現在の社畜生活" 
+                                    desc="現在は年319日勤務という過酷な環境で労働中。時間がない中で「資産になる労働」を模索し、副業を決意する。"
+                                /&gt;
+                                &lt;TimelineItem 
+                                    year="05" 
+                                    title="副業ブログ〜Threads × AI" 
+                                    desc="初の副業ブログで初収益を達成後、Instagram参入するも社畜で断念。Threadsへピボットするも苦戦を強いられる…"
+                                /&gt;
+                                &lt;TimelineItem 
+                                    year="06" 
+                                    title="１年で累計２００万以上の収益化を達成" 
+                                    desc="継続の結果、『AITHRAISE』『NOTERAISE』販売開始43日で120万達成。現在は毎月6桁を継続しながらさらなる高みへ、仲間と共に進んでいる。"
+                                    current={true}
+                                /&gt;
+                             &lt;/div&gt;
+
+                             {/* Instagram Reel Embed - Optimized for in-site playback */}
+                             &lt;div className="mt-20 flex flex-col items-center justify-center fade-up"&gt;
+                                &lt;p className="text-brand-gold text-sm font-en tracking-widest mb-6 font-bold uppercase"&gt;Special Movie&lt;/p&gt;
+                                &lt;div className="rounded-xl overflow-hidden shadow-2xl border border-brand-gold/20 bg-black w-[350px] max-w-full h-[630px] relative"&gt;
+                                    &lt;iframe 
+                                        className="absolute inset-0 w-full h-full"
+                                        src="https://www.instagram.com/reel/DBD9X77NpAP/embed/" 
+                                        frameBorder="0" 
+                                        scrolling="no" 
+                                        allowTransparency="true"
+                                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                        title="Kenshiro Instagram Reel"
+                                    &gt;&lt;/iframe&gt;
+                                &lt;/div&gt;
+                                &lt;p className="mt-4 text-[10px] text-gray-500 font-sans"&gt;
+                                    ※動画が表示されない場合は&lt;a href="https://www.instagram.com/reel/DBD9X77NpAP/" target="_blank" className="text-brand-gold underline hover:text-white ml-1"&gt;こちら&lt;/a&gt;からご覧ください
+                                &lt;/p&gt;
+                             &lt;/div&gt;
                         &lt;/div&gt;
                     &lt;/section&gt;
 
@@ -894,16 +1088,16 @@
                         &lt;div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8"&gt;
                             &lt;div className="text-center md:text-left"&gt;
                                 &lt;h2 className="text-3xl md:text-4xl font-elegant italic tracking-[0.05em] font-bold text-white mb-4"&gt;
-                                    Daiki Portfolio
+                                    Kenshiro Portfolio
                                 &lt;/h2&gt;
                                 &lt;p className="text-xs font-sans opacity-40 tracking-widest"&gt;
-                                    © 2024 Daiki Portfolio. All Rights Reserved.
+                                    © 2024 Kenshiro Portfolio. All Rights Reserved.
                                 &lt;/p&gt;
                             &lt;/div&gt;
                             &lt;div className="flex gap-8"&gt;
-                                &lt;a href="#" className="hover-target text-sm font-en font-bold uppercase tracking-widest hover:text-brand-gold transition-colors"&gt;Twitter&lt;/a&gt;
-                                &lt;a href="#" className="hover-target text-sm font-en font-bold uppercase tracking-widest hover:text-brand-gold transition-colors"&gt;Instagram&lt;/a&gt;
-                                &lt;a href="#" className="hover-target text-sm font-en font-bold uppercase tracking-widest hover:text-brand-gold transition-colors"&gt;Contact&lt;/a&gt;
+                                &lt;a href="https://www.threads.net/@kenshiro_ai.fukugyo" className="hover-target text-sm font-en font-bold uppercase tracking-widest hover:text-brand-gold transition-colors"&gt;Threads&lt;/a&gt;
+                                &lt;a href="https://lin.ee/Hmq3J35" className="hover-target text-sm font-en font-bold uppercase tracking-widest hover:text-brand-gold transition-colors"&gt;Line&lt;/a&gt;
+                                &lt;a href="https://note.com/kenshiro0909" className="hover-target text-sm font-en font-bold uppercase tracking-widest hover:text-brand-gold transition-colors"&gt;Note&lt;/a&gt;
                             &lt;/div&gt;
                         &lt;/div&gt;
                     &lt;/footer&gt;
@@ -916,8 +1110,8 @@
     &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-                        <div class="absolute inset-0 pointer-events-none rounded-b-lg shadow-[inset_0_-20px_20px_rgba(0,0,0,0.5)]"></div>
-                    </div>
+                            <div class="absolute inset-0 pointer-events-none rounded-b-lg shadow-[inset_0_-20px_20px_rgba(0,0,0,0.5)]"></div>
+                        </div>
                     </div>
 
                     <!-- Card 2: Open Chat Note -->
@@ -1590,45 +1784,59 @@
         lucide.createIcons();
 
         // Copy to clipboard function
-        async function copyToClipboard(elementId, button) {
+        function copyToClipboard(elementId, button) {
             const codeElement = document.getElementById(elementId);
             if (!codeElement) {
                 console.error('Element not found:', elementId);
                 return;
             }
             const textToCopy = codeElement.innerText;
-            const originalText = button.querySelector('.copy-text').innerText; // Use innerText to be safe
+            const originalText = button.querySelector('.copy-text').innerText;
+
+            // Fallback for iFrame restrictions
+            const textArea = document.createElement("textarea");
+            textArea.value = textToCopy;
+            
+            // Avoid scrolling to bottom
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            textArea.style.opacity = "0";
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
 
             try {
-                await navigator.clipboard.writeText(textToCopy);
-                
-                // Visual feedback
-                button.querySelector('.copy-text').innerText = 'Copied!';
-                
-                // Change button style temporarily
-                const originalClasses = button.className;
-                
-                // Simple feedback style
-                button.classList.add('bg-green-600', 'border-green-600', 'text-white');
-                // Remove specific color classes to ensure green shows up if needed
-                
-                if (button.classList.contains('bg-purple-600')) {
-                     button.classList.remove('bg-purple-600', 'hover:bg-purple-500');
-                } else if (button.classList.contains('bg-slate-700')) {
-                     button.classList.remove('bg-slate-700', 'hover:bg-blue-600');
-                }
-
-                setTimeout(() => {
-                    button.querySelector('.copy-text').innerText = originalText;
+                const successful = document.execCommand('copy');
+                if(successful) {
+                    // Visual feedback
+                    button.querySelector('.copy-text').innerText = 'Copied!';
                     
-                    // Restore classes
-                    button.className = originalClasses;
-                }, 2000);
+                    // Change button style temporarily
+                    const originalClasses = button.className;
+                    
+                    // Simple feedback style
+                    button.classList.add('bg-green-600', 'border-green-600', 'text-white');
+                    
+                    if (button.classList.contains('bg-purple-600')) {
+                          button.classList.remove('bg-purple-600', 'hover:bg-purple-500');
+                    } else if (button.classList.contains('bg-slate-700')) {
+                          button.classList.remove('bg-slate-700', 'hover:bg-blue-600');
+                    }
 
+                    setTimeout(() => {
+                        button.querySelector('.copy-text').innerText = originalText;
+                        button.className = originalClasses;
+                    }, 2000);
+                } else {
+                    throw new Error('Copy command failed');
+                }
             } catch (err) {
                 console.error('Failed to copy text: ', err);
                 button.querySelector('.copy-text').innerText = 'Error';
             }
+            document.body.removeChild(textArea);
         }
     </script>
 </body>
